@@ -1,0 +1,15 @@
+<h1>New User</h1>
+
+
+  
+  <%= f.label :email %>
+  <%= f.email_field :email %>
+
+  
+  <%= f.submit "登録" %>
+<% end %>
+
+
+<%= render 'form', user: @user %>
+
+<%= link_to 'Back', users_path %>
