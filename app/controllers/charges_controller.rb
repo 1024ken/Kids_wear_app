@@ -13,13 +13,23 @@ class ChargesController < ApplicationController
     
     
     def create
+        # Stripeのトークン
         token = params[:stripeToken]
+        
+        # 契約プラン
+        # plan = params[:plan]
+        
+        
+        
         # Customer作成
         customer = Stripe::Customer.create(
             email: params[:email],
             
             source: token,
             )
+            
+        
+        # customer_id = customer.id
             
         # Subscription作成    
         Stripe::Subscription.create(
@@ -30,9 +40,13 @@ class ChargesController < ApplicationController
     },
   ],
 )  
+
             
     rescue Stripe::CardError => e
         flash[:error] = e.message
         redirect_to new_charge_path
     end
+    
+    
+    
 end

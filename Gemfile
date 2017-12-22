@@ -60,3 +60,14 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'stripe'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
+
+gem 'execjs'
+gem 'therubyracer'
+
+
+gem 'bcrypt', '3.1.11'
+
+
+gem 'faker'
+
+gem 'gon'

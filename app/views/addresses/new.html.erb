@@ -1,0 +1,64 @@
+<h1>Addresses#new</h1>
+<p>Find me in app/views/addresses/new.html.erb</p>
+
+<table>
+    <tbody>
+        <tr>
+            <th>名前</th>
+            　<td>
+            　<input type="text" name="last_name" placeholder="姓" value="">
+            　<input type="text" name="first_name" placeholder="名" value="">
+              </td>
+        </tr>
+        <tr>
+            <th>名前（カナ）</th>
+            　<td>
+            　<input type="text" name="last_name_kana" placeholder="セイ" value="">
+            　<input type="text" name="first_name_kana" placeholder="メイ" value="">
+              </td>
+        </tr>
+        <tr>
+            <th>電話番号</th>
+            　<td>
+            　<input type="tel" name="tel" maxlength="11" pattern="\d*" placeholder="00000000000">
+              </td>
+        </tr>
+        <tr>
+            <th>郵便番号</th>
+            　<td>
+            　<input type="text" id="post-code-1" name="post_code" maxlength="3" pattern="\d*" placeholder="000" value="">
+            　<input type="text" id="post-code-2" name="post_code" maxlength="4" pattern="\d*" placeholder="0000" value="">
+              </td>
+        </tr>
+        <tr>
+            <th>都道府県</th>
+            　<td>
+            　<input class="" value="" disabled="">
+              </td>
+        </tr>
+        <tr>
+            <th>市区町村</th>
+            　<td>
+            　<input class="" value="" disabled="">
+              </td>
+        </tr>
+        <tr>
+            <th>地域名</th>
+            　<td>
+            　<input class="" value="" disabled="">
+              </td>
+        </tr>
+        <tr>
+            <th>番地</th>
+            　<td>
+            　<input type="text" name="street" class=""value="">
+              </td>
+        </tr>
+        <tr>
+            <th>建物</th>
+            　<td>
+            　<input type="text" name="building" class=""value="">
+              </td>
+        </tr>
+    </tbody>
+</table>

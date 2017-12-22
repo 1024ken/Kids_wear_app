@@ -1,0 +1,2 @@
+class FavoritePattern < ApplicationRecord
+end
