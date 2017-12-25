@@ -1,0 +1,107 @@
+<div class="container">
+  <div class="row">
+    <div class="test col-md-6 col-md-offset-3">
+      <h1>ユーザ情報を登録してもよいですか？</h1>
+
+      <%=form_with(model: @addresses, local: true, url: addresses_path) do |f| %>
+      <table>
+        <tbody>
+          <tr>
+            <th>名前</th>
+            <td>
+              <%= f.hidden_field :name %>
+              <%= @addresses.name %>
+            </td>
+          </tr>
+        
+          <tr>
+            <th>名前（カナ）</th>
+            <td>
+              <%= f.hidden_field :kana %>
+              <%= @addresses.kana %>
+            </td>
+          </tr>
+        
+          <tr>
+            <th>メールアドレス</th>
+            <td>
+              <%= f.hidden_field :email %>
+              <%= @addresses.email %>
+            </td>
+          </tr>
+          
+          <tr>
+            <th>電話番号</th>
+            <td>
+              <%= f.hidden_field :phone %>
+              <%= @addresses.phone %>
+            </td>
+          </tr>
+          
+          <tr>
+            <th>郵便番号</th>
+            <td>
+              <%= f.hidden_field :post_code %>
+              <%= @addresses.post_code %>
+            </td>
+          </tr>
+          
+          <tr>
+            <th>都道府県</th>
+            <td>
+              <%= f.hidden_field :prefecture %>
+              <%= @addresses.prefecture %>
+            </td>
+          </tr>
+          
+          <tr>
+            <th>市区町村</th>
+            <td>
+              <%= f.hidden_field :city %>
+              <%= @addresses.city %>
+            </td>
+          </tr>
+          
+          <tr>
+            <th>番地</th>
+            <td>
+              <%= f.hidden_field :street %>
+              <%= @addresses.street %>
+            </td>
+          </tr>
+          
+          <tr>
+            <th>建物</th>
+            <td>
+              <%= f.hidden_field :building %>
+              <%= @addresses.building %>
+            </td>
+          </tr>
+        </tbody>
+    </table>    
+        <!--createアクションへ-->
+        <%= f.submit "ユーザ情報を登録する" %>
+        
+      <% end %>
+
+     
+      
+      
+  
+      <!--戻るボタン-->
+      <%=form_with(model: @addresses, local: true, url: new_address_path, method:"get") do |f| %>
+        <%= f.hidden_field :name %>
+        <%= f.hidden_field :kana %>
+        <%= f.hidden_field :email %>
+        <%= f.hidden_field :phone %>
+        <%= f.hidden_field :post_code %>
+        <%= f.hidden_field :prefecture %>
+        <%= f.hidden_field :city %>
+        <%= f.hidden_field :street %>
+        <%= f.hidden_field :building %>
+        
+        <%= f.submit "戻る", name: "back" %>
+      <% end %>  
+    </div>
+  </div>
+</div>

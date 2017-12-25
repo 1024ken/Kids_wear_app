@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class FavoritePatternTest < ActiveSupport::TestCase
+class ColorChildTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

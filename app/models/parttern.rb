@@ -1,0 +1,2 @@
+class Parttern < ApplicationRecord
+end

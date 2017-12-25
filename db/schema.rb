@@ -10,12 +10,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171220031144) do
+ActiveRecord::Schema.define(version: 20171225024301) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  
+  create_table "addresses", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+    t.string "email"
+    t.string "kana"
+    t.integer "phone"
+    t.string "post_code"
+    t.string "prefecture"
+    t.string "city"
+    t.string "street"
+    t.string "building"
+  end
+
+  create_table "children", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+    t.integer "birthday"
+    t.string "sex"
+    t.integer "size"
+  end
+
+  create_table "color_children", force: :cascade do |t|
+    t.integer "color_id"
+    t.integer "child_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "colors", force: :cascade do |t|
     t.string "name"
@@ -24,19 +52,23 @@ ActiveRecord::Schema.define(version: 20171220031144) do
     t.string "image_color"
   end
 
-  create_table "favorite_patterns", force: :cascade do |t|
+  create_table "dislikes", force: :cascade do |t|
     t.string "name"
+    t.string "sex"
+    t.string "image_dislike"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "hate_patterns", force: :cascade do |t|
-    t.string "name"
+  create_table "kids", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-  
-  create_table "kids", force: :cascade do |t|
+
+  create_table "partterns", force: :cascade do |t|
+    t.string "name"
+    t.string "image_parttern"
+    t.string "sex"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -52,12 +84,12 @@ ActiveRecord::Schema.define(version: 20171220031144) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "questions", force: :cascade do |t|
+  create_table "styles", force: :cascade do |t|
+    t.string "name"
+    t.string "sex"
+    t.string "image_style"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "content"
-    t.string "name"
-    t.integer "color_id"
   end
 
   create_table "users", force: :cascade do |t|

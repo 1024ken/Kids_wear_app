@@ -1,0 +1,39 @@
+// Place all the styles related to the questions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.hidden {
+    // visibility:hidden;
+      display:none;
+}
+
+.image_box {
+    .image {
+        width: 200px;
+        height: 200px;
+        position: relative;
+        background-color: blue;
+    }
+}
+
+
+
+.check_box {
+    
+  position: absolute;
+  /* チェックボックスは、親要素の右上から12pxの位置に配置します。 */
+  top: 12px;
+  left: 180px;
+    display: none;
+    // position: absolute;
+}
+.checked {
+    border: 4px solid;
+}
+
+.checked + input + input {
+  /* 画像にcheckedクラスが指定されたときは、
+  チェックボックスの非表示を解除します。 */
+  display: block;
+}

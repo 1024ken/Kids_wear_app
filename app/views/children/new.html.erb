@@ -1,0 +1,131 @@
+<%= form_with(model: @children, url: children_path, local: true) do |f| %>
+<!--バリデーション・エラー処理-->
+<% if @children.errors.any? %>
+ <div id="error_explanation">
+     <h3><%= @children.errors.count %>件のエラーがあります。</h3>
+     <ul>
+          
+     <% @children.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+
+
+
+<!--#####好きな色の質問##### -->
+<div class ="color_question">
+  <div class ="container">
+      <div class="row">
+        <% @colors.each do |color| %>
+          <div class="col-xs-6 col-md-4">
+              <div class="image_box">
+                <%= image_tag(color.image_color, class: "image")%>
+                <%= f.check_box :"[color][#{color.id}]", class:"check_box"%>
+                <%= f.hidden_field :name %>
+                <%= f.hidden_field :sex %>
+                <%= f.hidden_field :birthday %>
+              </div>    
+          </div>
+        <% end %>
+      </div>    
+  </div>
+    <input type="button" value="次へ" onClick="next_first()">
+    <input type="button" value="戻る" onClick="back_first()">
+</div>    
+　　
+
+
+
+
+               
+<!--#####好きなスタイルの質問  性別で出す画像を変える#####-->
+<div class ="style_question hidden">
+  <div class ="container">
+      <div class="row">
+        <% @styles.each do |style| %>
+          <div class="col-xs-6 col-md-4">
+              <div class="image_box">
+                <%= image_tag(style.image_style, class: "image")%>
+                <%= f.check_box :"[style][#{style.name}]", class:"check_box"%>
+              </div>    
+          </div>
+        <% end %>
+      </div>    
+  </div>
+    <input id="second_btn" type="button" value="次へ" onClick="next_second()">
+    <input type="button" value="戻る" onClick="back_first()">
+</div>    
+
+
+
+
+
+<div class ="second hidden">
+　<h1>2</h1>
+    　<%#= form.text_field :content %>
+    　
+</div>
+
+
+<div class ="third hidden">
+　<h1>3</h1>
+    　<%#= form.text_field :content %>
+  　   <input type="button" value="次へ" onClick="next_third()">
+      <input type="button" value="戻る" onClick="back_second()">
+</div>
+
+<div class ="fourth hidden">
+　<h1>4</h1>
+    　<%#= form.text_field :content %>
+  　   <input type="button" value="次へ" onClick="next_fourth()">
+      <input type="button" value="戻る" onClick="back_third()">
+</div>
+
+<div class ="fifth hidden">
+　<h1>5</h1>
+    　<%#= form.text_field :content %>
+  　   <input type="button" value="次へ" onClick="next_fifth()">
+      <input type="button" value="戻る" onClick="back_fourth()">
+</div>
+
+<div class ="sixth hidden">
+　<h1>6</h1>
+    　<%#= form.text_field :content %>
+  　   <input type="button" value="次へ" onClick="next_sixth()">
+      <input type="button" value="戻る" onClick="back_fifth()">
+</div>
+
+<div class="action">
+    <!--<input type="text" name="test" id="test">-->
+    <input type="text" name="image" id="test">
+    <!--createアクションへ-->
+    <%= f.submit "送信" %>
+<% end %>
+</div>
+  
+<p><%= notice %></p>
+
+
+
+<!--<script type="text/javascript">-->
+<!--function image_border() {-->
+<!--    console.log("test");-->
+    <!--// newColor.style.borderColor= "red";-->
+<!--    }-->
+<!--    function next_first() {-->
+<!--    console.log('コンソール出すぜ');-->
+<!--    first[0].classList.add("hidden");-->
+<!--    second[0].classList.remove("hidden");-->
+<!--}-->
+<!--</script>-->
+
+
+
+<!--<div id = <#%= "image" + color.id.to_s %>>-->
+        　   <!--   <#%= link_to(image_tag(color.image_color, class: "image_size", onClick: "image_border(#{color.id}); return false;")) %>-->
+            <!--   <#%= form.collection_select :color_id, @colors, :id, :name, {}, {id: "color_selectbox",class: ""} %>-->
+               <%#= form.check_box :"[image][#{color.name}]"%>
