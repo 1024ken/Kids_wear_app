@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171225024301) do
+ActiveRecord::Schema.define(version: 20180106041552) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,15 +27,20 @@ ActiveRecord::Schema.define(version: 20171225024301) do
     t.string "city"
     t.string "street"
     t.string "building"
+    t.integer "user_id"
   end
 
   create_table "children", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
-    t.integer "birthday"
     t.string "sex"
     t.integer "size"
+    t.integer "user_id"
+    t.text "image"
+    t.boolean "paymented_on", default: false, null: false
+    t.string "stripe_id"
+    t.date "birthday"
   end
 
   create_table "color_children", force: :cascade do |t|
@@ -52,6 +57,21 @@ ActiveRecord::Schema.define(version: 20171225024301) do
     t.string "image_color"
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.string "content"
+    t.bigint "child_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["child_id"], name: "index_comments_on_child_id"
+  end
+
+  create_table "dislike_children", force: :cascade do |t|
+    t.integer "child_id"
+    t.integer "dislike_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "dislikes", force: :cascade do |t|
     t.string "name"
     t.string "sex"
@@ -60,7 +80,20 @@ ActiveRecord::Schema.define(version: 20171225024301) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "feeds", force: :cascade do |t|
+    t.text "image"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "kids", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "parttern_children", force: :cascade do |t|
+    t.integer "child_id"
+    t.integer "parttern_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -84,6 +117,13 @@ ActiveRecord::Schema.define(version: 20171225024301) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "style_children", force: :cascade do |t|
+    t.integer "child_id"
+    t.integer "style_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "styles", force: :cascade do |t|
     t.string "name"
     t.string "sex"
@@ -103,7 +143,9 @@ ActiveRecord::Schema.define(version: 20171225024301) do
     t.string "stripe_customer_id"
     t.string "stripe_subscription_id"
     t.datetime "active_untill"
+    t.text "image"
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "comments", "children"
 end

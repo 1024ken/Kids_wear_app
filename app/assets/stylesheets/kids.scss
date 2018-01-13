@@ -1,3 +1,88 @@
-// Place all the styles related to the kids controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+// トップページと基本画面
+
+html {
+  font-size: 62.5%;
+  height: 100%;
+  position: relative;
+}
+body {
+  background-color: #fafafa
+}
+/*ヘッダー、ナビ*/
+.navbar-default.adjust {
+  background-color: #fff;
+  // border-bottom: 4px solid #f7f7f7;
+  box-shadow: 0px 2px 1px 0px rgba(102, 93, 93, 0.15);
+}
+.navbar-default .navbar-brand {
+  color: #f0f4f5;
+  text-shadow: 1px 1px 1px #333;
+}
+
+.collapse.navbar-collapse.navbar-right {
+    text-align: right;
+    display: block;
+}
+.top_image {
+  background-image: url(kid_smail.jpg);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  width: 100vm;
+  height: 86vh;
+}
+.transparent {
+  background-color:rgba(255,255,255,0.7);  
+  height: 100%;
+}
+
+.main-text {
+    margin-top: 340px;
+    font-size: 42px;
+    font-weight: bold;
+    line-height: 1.0em;
+    text-align: center;
+    color: #fff;
+    text-shadow: 2px 2px 2px #333;
+}
+.sub-text {
+    margin-top: 27px;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 1.0em;
+    text-align: center;
+    color: #fff;
+    text-shadow: 1px 1px 1px #333;
+    
+}
+
+// Services Section
+section {
+    padding: 100px 0;
+}
+section h2.section-heading {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 40px;
+    line-height: 1.5
+}
+section h3.section-subheading {
+    margin-bottom: 75px;
+    text-transform: none;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.6;
+}
+
+
+
+footer {
+  width: 100%;
+  height: 40px;
+  position: relative;
+  bottom: 0;
+  padding: 12px;
+  text-align: center;
+  background-color: #f0f4f5;
+}

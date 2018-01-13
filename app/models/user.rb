@@ -12,4 +12,11 @@ class User < ApplicationRecord
     # createアクション実行時のみバリデーションが実行される
     validates :password, presence: true, length: { minimum:6 }, on: :create
     
+    
+    has_many :children
+    
+    has_many :addresses
+    
+    mount_uploader :image, ImageUploader
+    
 end

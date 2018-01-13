@@ -1,30 +1,78 @@
+<!--#####マイページ画面#####-->
+
 <p id="notice"><%= notice %></p>
 
-<h1>Users</h1>
+<div class="container user">
+  <div class="row user">
+    <div class="col-lg-12 text-center">
+      <div class="user-name-text">
+        <h2 class="user-heading"><%= current_user.name %>さんのページ</h2>
+          <h3 class="user-subheading text-muted">ご登録いただいている情報を確認・編集することができます。</h3>
+          <P><%= link_to "子供を追加する", top_children_question_children_path(current_user.id), class:"btn gray btn-default btn-lg" %></P>
+          <P><%= link_to "アカウント変更", edit_address_path(current_user.id), class:"btn gray btn-default btn-lg" %></P>
+      </div>
+    </div>
+  </div>
+</div>  
+  
+    
+
+<div class="container child">
+<!--#####子供情報#####  -->
+  <% @children.each do |child| %>
+  
+    <div class="row child-box">
+      <div class="col-md-6">
+        <div class="child-image">
+          <%= image_tag child.image unless child.image.blank? %>
+            <%= form_for(child, url: child_path(child), method: :put) do |f| %>
+              <%= f.file_field :image %>
+              <%= f.hidden_field :image_cache %>
+              <%= f.submit "子供の画像を登録する" %>
+            <% end %>  
+      </div>
+    </div>
+    
+        
+    <div class="col-md-6">
+      <table class="child-detail-table">
+        <tr>
+          <th>名前</th>
+          <td><%= child.name %>さん</td>
+        </tr>
+                
+        <tr>
+          <th>誕生日</th>
+          <td><%= child.birthday %></td>
+        </tr>
+                
+        <tr>
+          <th>性別</th>
+          <td><%= "男の子" if child.sex == "1" %><%= "女の子" if child.sex == "2" %></td>
+        </tr>
+                
+        <tr>
+          <th>サイズ</th>
+          <td><%= child.size.to_s %></td>
+        </tr>
+                
+        <tr>
+          <th>ステータス</th>
+          <td><%= "会員" if child.paymented_on == true%><%= "非会員" if child.paymented_on == false%></td>
+        </tr>
+      </table>
+    </div>
+  
+  
+    <div class="closet-info col-lg-12 text-center">
+      <P><%= link_to '詳細(クローゼットの中身をみる）', child_path(child.id), class:"btn gray btn-default btn-lg"%></P>
+      <P><%= link_to '削除', child_path(child.id), class:"btn gray btn-default btn-lg", method: :delete, data: { confirm: '子供の情報を削除しますがよろしいでしょうか？' } if child.user == current_user %></P>
+      <P><%= link_to 'サブスクリプションを解約する', charge_path(params: {child_id: child.id}), class:"btn red btn-default btn-lg", method: :delete, data: { confirm: 'サブスクリプションを解約してもよろしいでしょうか？' } unless child.stripe_id.blank? %></P>
+      <P><%= link_to '定期購入をはじめる', new_charge_path(params: {child_id: child.id}), class:"btn red btn-default btn-lg" if child.paymented_on == false %> </P>
+    </div>
 
 
+      <% end %>
+  </div>
+</div>
 
-
-
-
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New User', new_user_path %>

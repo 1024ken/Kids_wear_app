@@ -1,0 +1,23 @@
+
+[1mFrom:[0m /home/ubuntu/workspace/wear_kid/app/controllers/children_controller.rb @ line 38 ChildrenController#new:
+
+    [1;34m22[0m: [32mdef[0m [1;34mnew[0m
+    [1;34m23[0m:     @children = current_user.children.build(children_params)
+    [1;34m24[0m:     [1;34m# @children.save[0m
+    [1;34m25[0m:     [1;34m# binding.pry[0m
+    [1;34m26[0m: 
+    [1;34m27[0m:     [32mif[0m @children.invalid?
+    [1;34m28[0m:         puts [31m[1;31m"[0m[31mエラー[1;31m"[0m[31m[0m
+    [1;34m29[0m:         render [31m[1;31m"[0m[31mtop_children_question[1;31m"[0m[31m[0m
+    [1;34m30[0m:     [32melse[0m
+    [1;34m31[0m:         @children.comments.build
+    [1;34m32[0m:         @colors = [1;34;4mColor[0m.all
+    [1;34m33[0m:         
+    [1;34m34[0m:         [1;34m# top_children_questionで選択した性別に応じた画像を検索表示[0m
+    [1;34m35[0m:         @styles = [1;34;4mStyle[0m.where([35msex[0m: params[[33m:child[0m][[33m:sex[0m])
+    [1;34m36[0m:         @partterns = [1;34;4mParttern[0m.where([35msex[0m: params[[33m:child[0m][[33m:sex[0m])
+    [1;34m37[0m:         @dislikes = [1;34;4mDislike[0m.where([35msex[0m: params[[33m:child[0m][[33m:sex[0m])
+ => [1;34m38[0m:         binding.pry
+    [1;34m39[0m:     [32mend[0m
+    [1;34m40[0m: [32mend[0m
+

@@ -1,0 +1,5 @@
+class AddStripeIdToChild < ActiveRecord::Migration[5.1]
+  def change
+    add_column :children, :stripe_id, :string
+  end
+end

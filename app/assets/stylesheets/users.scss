@@ -1,3 +1,108 @@
-// Place all the styles related to the users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+
+// 新規アカウント作成（new)
+.container.account {
+  background-color: white;
+  border: 2px solid #efefef;
+  margin-top: 120px;
+}
+.row.account {
+  margin-bottom: 70px;
+}
+
+
+
+//マイページ画面(index)
+.container.user {
+  background-color: white;
+  border: 3px solid #efefef;
+  margin-top: 120px;
+}
+.row.user {
+  margin-bottom: 60px;
+}
+
+.user-name-text {
+    font-size: 30px;
+    font-weight: bold;
+    line-height: 1;
+}
+.user h2.user-heading {
+    margin-top: 60px;
+    margin-bottom: 15px;
+    font-size: 40px;
+    line-height: 1.5
+}
+.user h3.user-subheading {
+    margin-bottom: 75px;
+    text-transform: none;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.6;
+}
+
+.container.child {
+    background-color: white;
+    border: 3px solid #efefef;
+    margin-top: 60px;
+}
+.row.child-box {
+    margin-top: 70px;
+    margin-bottom: 70px;
+    margin-left: 20px;
+    margin-right: 20px;
+    // border: 2px solid #f5f5f5;
+}
+
+
+.child-detail-table {
+    max-width: 300px;
+    height: 300px;
+    margin-bottom: 30px;
+    margin-top: 53px;
+    margin-right: 120px;
+    margin-left: 120px;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.child-detail-table th {
+    border-collapse: collapse;
+    border: 1px solid #f5f5f5;
+    width: 120px;
+    text-align: center;
+    font-weight: 400;
+    background: #fafafa;
+}
+.child-detail-table td {
+    border-collapse: collapse;
+    border: 1px solid #fafafa;
+    width: 200px;
+    text-align: center;
+    background: #fff;
+}
+
+.child-image {
+  margin-top: 40px;
+  margin-bottom: 40px;
+  margin-left: 40px;
+}
+.closet-info {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+.btn.gray {
+  width: 70%;
+  background: #aaa;
+  border: 1px solid #aaa;
+  color: #fff;
+  font-size: 14px;
+}
+.btn.red {
+  width: 70%;
+  background: #ea352d;
+  border: 1px solid #ea352d;
+  color: #fff;
+  font-size: 14px;
+}
+
+

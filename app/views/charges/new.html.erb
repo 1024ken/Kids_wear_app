@@ -1,4 +1,4 @@
-<%= form_tag charges_path do %>
+<%= form_tag charge_path, user_id: current_user.id do %>
   <article>
     <% if flash[:error].present? %>
       <div id="error_explanation">
@@ -9,8 +9,11 @@
       <span>Amount: $5.00</span>
     </label>
   </article>
-
-
+  <% if @children%>
+    <%= hidden_field_tag :child_id, @children.id %>
+  <% else %>
+    <%= hidden_field_tag :child_id, params[:child_id] %>
+  <% end %>
 <!--チェックアウト-->
   <script
     src="https://checkout.stripe.com/checkout.js" class="stripe-button"

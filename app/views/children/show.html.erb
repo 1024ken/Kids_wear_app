@@ -1,0 +1,24 @@
+<div class="container"> 
+    <div class="row">
+        <div class="col-md-4 col-md-offset-4">
+        <h1><%= @children.name %>さんのページ</h1>
+        <p><%= image_tag @children.image unless @children.image.blank? %></p>
+        </div>
+        
+    <div class="row">
+    　　<div class="col-md-4 col-md-offset-4">
+          <h2>クローゼット一覧</h2>
+        <table>
+          <tr>
+            <td><%= link_to "クローゼットの枠を追加購入する" %></td>
+            <td><%= link_to "クローゼットの中身を変更申請" %></td>
+            <td><%= link_to "レビューを投稿する" %></td>
+          </tr>
+        </table>
+
+        
+        
+        
+        
+    </div>
+</div>      

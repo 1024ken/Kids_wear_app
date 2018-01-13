@@ -1,61 +1,67 @@
 // window.onload=function(){
 
+var back = document.getElementsByClassName("top_question")
 
-var first = document.getElementsByClassName("color_question")
-var second = document.getElementsByClassName("style_question")
-var third = document.getElementsByClassName("third")
-var fourth = document.getElementsByClassName("fourth")
-var fifth = document.getElementsByClassName("fifth")
-var sixth = document.getElementsByClassName("sixth")
+var color = document.getElementsByClassName("color_question")
+var style = document.getElementsByClassName("style_question")
+var parttern = document.getElementsByClassName("parttern_question")
+var dislike = document.getElementsByClassName("dislike_question")
+var comment = document.getElementsByClassName("comment_question")
+var confirm = document.getElementsByClassName("confirm_question")
+
+
 
 
 // 次へボタン
 // 次へボタンをクリックしたとき、、自身にhiddenクラスが当てられていたら、hidden_addで、次のdivをhidden_removeする
-function next_first() {
-    first[0].classList.add("hidden");
-    second[0].classList.remove("hidden");
+function next_btn_style() {
+    color[0].classList.add("hidden");
+    style[0].classList.remove("hidden");
+    back[1].classList.add("hidden");
+    
 }
-function next_second() {
-    second[0].classList.add("hidden");
-    third[0].classList.remove("hidden");
+function next_btn_parttern() {
+    style[0].classList.add("hidden");
+    parttern[0].classList.remove("hidden");
 }
-function next_third() {
-    third[0].classList.add("hidden");
-    fourth[0].classList.remove("hidden");
+function next_btn_dislike() {
+    parttern[0].classList.add("hidden");
+    dislike[0].classList.remove("hidden");
 }
-function next_fourth() {
-    fourth[0].classList.add("hidden");
-    fifth[0].classList.remove("hidden");
+function next_btn_comment() {
+    dislike[0].classList.add("hidden");
+    comment[0].classList.remove("hidden");
 }
-function next_fifth() {
-    fifth[0].classList.add("hidden");
-    sixth[0].classList.remove("hidden");
+function next_btn_confirm() {
+    comment[0].classList.add("hidden");
+    confirm[0].classList.remove("hidden");
 }
-
 
 
 
 // 戻るボタン
-function back_first() {
-    first[0].classList.remove("hidden");
-    second[0].classList.add("hidden");
+function back_btn_color() {
+    color[0].classList.remove("hidden");
+    style[0].classList.add("hidden");
+    back[1].classList.remove("hidden");
 }
-function back_second() {
-    second[0].classList.remove("hidden");
-    third[0].classList.add("hidden");
+function back_btn_style() {
+    style[0].classList.remove("hidden");
+    parttern[0].classList.add("hidden");
 }
-function back_third() {
-    third[0].classList.remove("hidden");
-    fourth[0].classList.add("hidden");
+function back_btn_parttern() {
+    parttern[0].classList.remove("hidden");
+    dislike[0].classList.add("hidden");
 }
-function back_fourth() {
-    fourth[0].classList.remove("hidden");
-    fifth[0].classList.add("hidden");
+function back_btn_dislike() {
+    dislike[0].classList.remove("hidden");
+    comment[0].classList.add("hidden");
 }
-function back_fifth() {
-    fifth[0].classList.remove("hidden");
-    sixth[0].classList.add("hidden");
+function back_btn_comment() {
+    comment[0].classList.remove("hidden");
+    confirm[0].classList.add("hidden");
 }
+
 
 
 
@@ -96,6 +102,23 @@ $(function() {
   });
 });
 
+$(function(){
+  $('#datetimepicker').datetimepicker({
+    format: 'YYYY/MM/DD',
+    locale: 'ja',
+  });
+}); 
+  
+
+
+
+
+
+
+
+
+
+
 
 //　★テスト　クリックしたら、color_idを配列に入れる。再度押下時、配列削除
     // var sample = color_id
@@ -112,8 +135,8 @@ $(function() {
 // onclickの別の書き方。id値を設定し、要素を取得し、functionに処理を記載する
 // var i = document.getElementById("test")
 // i.onclick = function(){
-//     first[0].classList.add("hidden");
-//     second[0].classList.remove("hidden");
+//     color[0].classList.add("hidden");
+//     style[0].classList.remove("hidden");
 // }
 
 
