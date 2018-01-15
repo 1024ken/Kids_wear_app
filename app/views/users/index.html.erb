@@ -30,8 +30,8 @@
               <%= f.hidden_field :image_cache %>
               <%= f.submit "子供の画像を登録する" %>
             <% end %>  
+        </div>
       </div>
-    </div>
     
         
     <div class="col-md-6">
@@ -48,7 +48,10 @@
                 
         <tr>
           <th>性別</th>
-          <td><%= "男の子" if child.sex == "1" %><%= "女の子" if child.sex == "2" %></td>
+          <td>
+            <%= "男の子" if child.sex == "1" %>
+            <%= "女の子" if child.sex == "2" %>
+          </td>
         </tr>
                 
         <tr>
@@ -58,7 +61,10 @@
                 
         <tr>
           <th>ステータス</th>
-          <td><%= "会員" if child.paymented_on == true%><%= "非会員" if child.paymented_on == false%></td>
+          <td>
+            <%= "会員" if child.paymented_on == true%>
+            <%= "非会員" if child.paymented_on == false%>
+          </td>
         </tr>
       </table>
     </div>
@@ -67,12 +73,8 @@
     <div class="closet-info col-lg-12 text-center">
       <P><%= link_to '詳細(クローゼットの中身をみる）', child_path(child.id), class:"btn gray btn-default btn-lg"%></P>
       <P><%= link_to '削除', child_path(child.id), class:"btn gray btn-default btn-lg", method: :delete, data: { confirm: '子供の情報を削除しますがよろしいでしょうか？' } if child.user == current_user %></P>
-      <P><%= link_to '削除', child_path(child.id), class:"btn gray btn-default btn-lg", method: :delete if child.user == current_user %></P>
       
-
-      
-      
-      
+    
       <P><%= link_to 'サブスクリプションを解約する', charge_path(params: {child_id: child.id}), class:"btn red btn-default btn-lg", method: :delete, data: { confirm: 'サブスクリプションを解約してもよろしいでしょうか？' } unless child.stripe_id.blank? %></P>
       <P><%= link_to '定期購入をはじめる', new_charge_path(params: {child_id: child.id}), class:"btn red btn-default btn-lg" if child.paymented_on == false %> </P>
     </div>

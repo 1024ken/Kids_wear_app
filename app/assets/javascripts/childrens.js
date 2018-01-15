@@ -7,7 +7,7 @@ var style = document.getElementsByClassName("style_question")
 var parttern = document.getElementsByClassName("parttern_question")
 var dislike = document.getElementsByClassName("dislike_question")
 var comment = document.getElementsByClassName("comment_question")
-var confirm = document.getElementsByClassName("confirm_question")
+var register = document.getElementsByClassName("register_question")
 
 
 
@@ -32,9 +32,9 @@ function next_btn_comment() {
     dislike[0].classList.add("hidden");
     comment[0].classList.remove("hidden");
 }
-function next_btn_confirm() {
+function next_btn_register() {
     comment[0].classList.add("hidden");
-    confirm[0].classList.remove("hidden");
+    register[0].classList.remove("hidden");
 }
 
 
@@ -59,7 +59,7 @@ function back_btn_dislike() {
 }
 function back_btn_comment() {
     comment[0].classList.remove("hidden");
-    confirm[0].classList.add("hidden");
+    register[0].classList.add("hidden");
 }
 
 

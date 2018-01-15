@@ -56,11 +56,10 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-
+# gem 'rails-ujs'
 gem 'stripe'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
-
 gem 'execjs'
 gem 'therubyracer'
 
@@ -78,5 +77,7 @@ gem 'mini_magick'
 
 gem 'momentjs-rails', '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'
+
+
 
 gem 'jp_prefecture'
