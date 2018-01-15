@@ -110,10 +110,11 @@ class ChildrenController < ApplicationController
    
    
    
-# マイページから子供削除
+# Userのマイページから子供削除
    def destroy
     #  @children = Child.find_by(user_id: current_user.id)
      @children = Child.find(params[:id])
+    #  binding.pry
      @children.destroy
      redirect_to users_path, notice: '子供の情報を削除されました'
    end

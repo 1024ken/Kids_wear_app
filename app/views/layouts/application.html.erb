@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= Gon::Base.render_data({}) %>
+    <%#= Gon::Base.render_data({}) %>
   </head>
 
   <body>
@@ -24,7 +24,7 @@
           </button>
           <a href="/" class="navbar-brand">KIDS WEAR</a>
         </div>
-        
+        <%#= link_to '削除', child_path(1) , method: :delete, data: { confirm: "bbb" } %>
     
     <!--メニューリスト-->
       <div id="gnavi" class="collapse navbar-collapse">

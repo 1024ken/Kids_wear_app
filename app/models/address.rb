@@ -1,12 +1,18 @@
 class Address < ApplicationRecord
-    # validates :name,  presence: true, length: { maximum: 30 }
-    # validates :email, presence: true, length: { maximum: 255 },
-    #                 format: { with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i }
-    # before_save { email.downcase! }
+    include JpPrefecture
+    jp_prefecture :prefecture_code
+    
+    # ハイフンなし10桁or9桁
+    validates :phone_code, presence: true, format: { with: /\A\d{10}$|^\d{11}\z/ }
     
     
-    validates :phone, presence: true, format: { with: /\A[0-9]+\z/ }
-    validates :prefecture, presence: true
+    validates :post_code, presence: true, format: { with: /\A\d{3}\-?\d{4}\z/ }
+    
+    
+    validates :prefecture_code, presence: true
+    validates :city_code, presence: true
+    validates :street_code, presence: true
+    
     
     belongs_to :user
 end
