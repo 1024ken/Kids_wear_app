@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= Gon::Base.render_data({}) %>
   </head>
 
   <body>
@@ -24,7 +23,7 @@
           </button>
           <a href="/" class="navbar-brand">KIDS WEAR</a>
         </div>
-        <%#= link_to '削除', child_path(1) , method: :delete, data: { confirm: "bbb" } %>
+        
     
     <!--メニューリスト-->
       <div id="gnavi" class="collapse navbar-collapse">
@@ -32,7 +31,7 @@
           <!--ログイン状態-->
           <% if logged_in? %>
             <% if current_user.children.empty? %>
-              <li><%= link_to "はじめよう",top_children_question_children_path(current_user.id),class:"btn btn-default btn-lg" %></li>
+              <li><%= link_to "はじめよう",top_children_question_children_path(current_user.id),class:"btn btn btn-start" %></li>
             <% end %>
               <li><%= link_to "マイページ", users_path(current_user.id) %></li>
               <li><%= link_to "ログアウト", session_path(current_user.id), method: :delete %></li>
