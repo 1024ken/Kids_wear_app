@@ -1,5 +1,6 @@
 class DropHate < ActiveRecord::Migration[5.1]
-  def change
-    drop_table :hates
-  end
+  # hateテーブルがない状態でdropしようとしているので、いらない
+  # def change
+  #   drop_table :hates
+  # end
 end
