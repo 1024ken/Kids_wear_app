@@ -30,14 +30,11 @@
         <ul class="nav navbar-nav navbar-right">
           <!--ログイン状態-->
           <% if logged_in? %>
-            <% if current_user.children.empty? %>
-              <li><%= link_to "はじめよう",top_children_question_children_path(current_user.id),class:"btn btn btn-start" %></li>
-            <% end %>
               <li><%= link_to "マイページ", users_path(current_user.id) %></li>
               <li><%= link_to "ログアウト", session_path(current_user.id), method: :delete %></li>
           <% else %>
           <!--未ログイン-->
-            <li><%= link_to "新規登録", new_user_path %></li>
+            <li><%= link_to "新規登録", new_user_path, class:"register-btn" %></li>
             <li><%= link_to "ログイン", new_session_path %></li>
           <% end %>
         </ul>

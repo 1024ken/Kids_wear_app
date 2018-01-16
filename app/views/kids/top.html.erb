@@ -7,7 +7,12 @@
           <div class="main-text">
             <div>おしゃれな子供服を受け取ろう</div>
           </div>
-            <div class="sub-text">月額5000円で季節に応じてパーソナライズされた子供服を届けます。</div>  
+            <div class="sub-text">月額5000円で季節に応じてパーソナライズされた子供服を届けます。</div>
+            <div class="start">
+            <% if logged_in? && current_user.children.empty? %>
+              <%= link_to "はじめよう",top_children_question_children_path(current_user.id),class:"btn btn-start" %>
+            <% end %>
+            </div>
           </div>
       </div>    
     </div>
@@ -34,11 +39,8 @@
         <h3 class="top-introduction-subheading text-center">
           レンタルでも購入でもない、あなただけのクローゼット<br>子供の成長に合わせて、あなただけの子供服をお届けする<br>月額制ファッションレンタルサービス
         </h3>
-          <% if logged_in? %>
-            <%= link_to "はじめよう",top_children_question_children_path(current_user.id),class:"btn btn btn-start" %></li>
-          <% else %>
-            <%= link_to "新規登録", new_user_path, class:"btn btn btn-start" %></li>
-            <%= link_to "ログイン", new_session_path, class:"btn btn btn-start" %></li>
+          <% if logged_in? && current_user.children.empty? %>
+            <%= link_to "はじめよう",top_children_question_children_path(current_user.id), class:"btn btn-start" %>
           <% end %> 
       </div>
     </div>
@@ -51,7 +53,7 @@
   <div class="second-introduction-container">
     <div class="row">
       <div class="col-lg-12 text-center">
-        <h2 class="second-introduction-heading">だれでも簡単に！</h2>
+        <h2 class="second-introduction-heading">簡単・シンプル！</h2>
           <p class="border"></p>
           <P class="second-introduction-description">
           <br>子供のサイズアウトから開放され、おしゃれを簡単に手に入れよう。
