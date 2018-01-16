@@ -77,6 +77,10 @@ GEM
     concurrent-ruby (1.0.5)
     crass (1.0.3)
     debug_inspector (0.0.3)
+    dotenv (2.2.1)
+    dotenv-rails (2.2.1)
+      dotenv (= 2.2.1)
+      railties (>= 3.2, < 5.2)
     erubi (1.7.0)
     execjs (2.7.0)
     faker (1.8.4)
@@ -233,6 +237,7 @@ DEPENDENCIES
   capybara (~> 2.13)
   carrierwave
   coffee-rails (~> 4.2)
+  dotenv-rails
   execjs
   faker
   gon
