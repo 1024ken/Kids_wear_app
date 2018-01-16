@@ -9,6 +9,7 @@ class ChargesController < ApplicationController
     # ・Subscription作成
     # 　　CustomerとPlanを紐づける
     def new
+        # @children = current_user.children
     end
     
     
@@ -17,8 +18,13 @@ class ChargesController < ApplicationController
         token = params[:stripeToken]
         
         # @children = Child.find_by(user_id: current_user)
-        @children = Child.find(params[:child_id])
-        @children.paymented_on = true
+        if params[:child_id].blank? 
+            @children = current_user.child.last
+            @children.paymented_on = true
+        else
+            @children = Child.find(params[:child_id])
+            @children.paymented_on = true
+        end
 
         # Customer作成
         customer = Stripe::Customer.create(

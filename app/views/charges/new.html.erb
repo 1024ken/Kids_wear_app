@@ -21,6 +21,7 @@
     <!--</label>-->
   </article>
   <% if @children%>
+  <%# binding.pry %>
     <%= hidden_field_tag :child_id, @children.id %>
   <% else %>
     <%= hidden_field_tag :child_id, params[:child_id] %>
