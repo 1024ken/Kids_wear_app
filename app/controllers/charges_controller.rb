@@ -19,7 +19,7 @@ class ChargesController < ApplicationController
         
         # @children = Child.find_by(user_id: current_user)
         if params[:child_id].blank? 
-            @children = current_user.child.last
+            @children = current_user.children.last
             @children.paymented_on = true
         else
             @children = Child.find(params[:child_id])
@@ -45,12 +45,12 @@ class ChargesController < ApplicationController
             },
           ],
         )  
-    @children.stripe_id = sample[:id]
-    @children.save
-            
-    rescue Stripe::CardError => e
-        flash[:error] = e.message
-        redirect_to new_charge_path
+        @children.stripe_id = sample[:id]
+        @children.save
+        render 'create'
+        rescue Stripe::CardError => e
+            flash[:error] = e.message
+            redirect_to new_charge_path
     end
     
     

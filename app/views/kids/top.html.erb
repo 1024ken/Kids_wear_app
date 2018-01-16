@@ -35,10 +35,10 @@
           レンタルでも購入でもない、あなただけのクローゼット<br>子供の成長に合わせて、あなただけの子供服をお届けする<br>月額制ファッションレンタルサービス
         </h3>
           <% if logged_in? %>
-            <li><%= link_to "はじめよう",top_children_question_children_path(current_user.id),class:"btn btn btn-start" %></li>
+            <%= link_to "はじめよう",top_children_question_children_path(current_user.id),class:"btn btn btn-start" %></li>
           <% else %>
-            <li><%= link_to "新規登録", new_user_path, class:"btn btn btn-start" %></li>
-            <li><%= link_to "ログイン", new_session_path, class:"btn btn btn-start" %></li>
+            <%= link_to "新規登録", new_user_path, class:"btn btn btn-start" %></li>
+            <%= link_to "ログイン", new_session_path, class:"btn btn btn-start" %></li>
           <% end %> 
       </div>
     </div>
