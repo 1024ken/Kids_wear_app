@@ -55,32 +55,32 @@
     <div class="form-group">
       <label class="col-md-6 control-label">都道府県:</label>  
       <div class="col-md-6 offset-md-1 confirm-adjust">
-        <%= f.hidden_field :prefecture%>
-        <%= @addresses.prefecture %>
+        <%= f.hidden_field :prefecture_code%>
+        <%= @addresses.prefecture_code %>
       </div>
     </div>
       
     <div class="form-group">
       <label class="col-md-6 control-label">市区町村:</label>  
       <div class="col-md-6 offset-md-1 confirm-adjust">
-        <%= f.hidden_field :city%>
-        <%= @addresses.city %>
+        <%= f.hidden_field :city_code%>
+        <%= @addresses.city_code %>
       </div>
     </div>
     
     <div class="form-group">
       <label class="col-md-6 control-label">番地:</label>  
       <div class="col-md-6 offset-md-1 confirm-adjust">
-        <%= f.hidden_field :street%>
-        <%= @addresses.street %>
+        <%= f.hidden_field :street_code%>
+        <%= @addresses.street_code %>
       </div>
     </div>
       
     <div class="form-group">
       <label class="col-md-6 control-label">建物:</label>  
       <div class="col-md-6 offset-md-1 confirm-adjust">
-        <%= f.hidden_field :building%>
-        <%= @addresses.building %>
+        <%= f.hidden_field :building_code%>
+        <%= @addresses.building_code %>
       </div>
     </div>
       <!--createアクションへ-->
