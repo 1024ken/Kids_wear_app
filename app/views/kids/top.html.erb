@@ -11,6 +11,8 @@
             <div class="start">
             <% if logged_in? && current_user.children.empty? %>
               <%= link_to "はじめよう",top_children_question_children_path(current_user.id),class:"btn btn-start" %>
+            <% else %>
+              <%= link_to "新規登録", new_user_path, class:"btn btn-start" %>
             <% end %>
             </div>
           </div>
@@ -39,9 +41,11 @@
         <h3 class="top-introduction-subheading text-center">
           レンタルでも購入でもない、あなただけのクローゼット<br>子供の成長に合わせて、あなただけの子供服をお届けする<br>月額制ファッションレンタルサービス
         </h3>
-          <% if logged_in? && current_user.children.empty? %>
-            <%= link_to "はじめよう",top_children_question_children_path(current_user.id), class:"btn btn-start" %>
-          <% end %> 
+        <% if logged_in? && current_user.children.empty? %>
+          <%= link_to "はじめよう",top_children_question_children_path(current_user.id),class:"btn btn-start" %>
+        <% else %>
+          <%= link_to "新規登録", new_user_path, class:"btn btn-start" %>
+        <% end %> 
       </div>
     </div>
   </div>  
