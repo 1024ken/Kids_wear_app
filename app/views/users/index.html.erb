@@ -9,9 +9,12 @@
         <h2 class="user-heading"><%= current_user.name %>さんのページ</h2>
           <p class="border"></p>
             <h3 class="user-subheading text-muted">ご登録いただいている情報を確認・編集することができます。</h3>
-          <P><%= link_to "子供を追加する", top_children_question_children_path(current_user.id), class:"btn gray btn-default btn-lg" %></P>
-          <P><%= link_to "アカウント変更", edit_address_path(current_user.id), class:"btn gray btn-default btn-lg" %></P>
-      </div>
+            <% unless current_user.children.blank? %>
+             <p><%= link_to "子供を追加する", top_children_question_children_path(current_user.id), class:"btn gray btn-default btn-lg" %></p>
+            <% else %>
+              <%= link_to "はじめよう",top_children_question_children_path(current_user.id),class:"btn btn-start" %>
+            <% end %>  
+            <p><%= link_to "アカウント変更", edit_address_path(current_user.id), class:"btn gray btn-default btn-lg" unless current_user.addresses.blank? %></P>
     </div>
   </div>
 </div>  
