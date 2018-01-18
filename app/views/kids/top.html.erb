@@ -11,8 +11,6 @@
             <div class="start">
             <% if logged_in? && current_user.children.empty? %>
               <%= link_to "はじめよう",top_children_question_children_path(current_user.id),class:"btn btn-start" %>
-            <% else %>
-              <%= link_to "新規登録", new_user_path, class:"btn btn-start" %>
             <% end %>
             </div>
           </div>
@@ -43,9 +41,7 @@
         </h3>
         <% if logged_in? && current_user.children.empty? %>
           <%= link_to "はじめよう",top_children_question_children_path(current_user.id),class:"btn btn-start" %>
-        <% else %>
-          <%= link_to "新規登録", new_user_path, class:"btn btn-start" %>
-        <% end %> 
+        <% end %>
       </div>
     </div>
   </div>  
