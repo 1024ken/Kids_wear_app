@@ -57,7 +57,7 @@
       <label class="col-md-6 control-label">都道府県:</label>  
       <div class="col-md-6 offset-md-1 confirm-adjust">
         <%= f.hidden_field :prefecture_code%>
-        <%= @addresses.prefecture_code %>
+        <%= @addresses.prefecture_code.to_s %>
       </div>
     </div>
       
