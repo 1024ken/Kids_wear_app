@@ -43,33 +43,33 @@
 
 
 ##### 本番用画像 #####
-# collor_names = %w(red blue yellow green orange gray black white )
-#     collor_names.each do |c_n|
-#         Color.create({name:c_n, image_color: "/assets/colors/#{c_n}.jpg"})
-#     end    
+collor_names = %w(red blue yellow green orange gray black white )
+    collor_names.each do |c_n|
+        Color.create({name:c_n, image_color: "/assets/colors/#{c_n}.jpg"})
+    end    
 
 
-# style_names = %w(cool classic casual simple)
-#     style_names.each do |s_n|
-#         Style.create({name:s_n, sex: "1", image_style: "/assets/styles/boy/#{s_n}.jpg"})
-#     end
+style_names = %w(cool classic casual simple)
+    style_names.each do |s_n|
+        Style.create({name:s_n, sex: "1", image_style: "/assets/styles/boy/#{s_n}.jpg"})
+    end
 
 
-# style_names = %w(cool classic casual simple)
-#     style_names.each do |s_n|
-#         Style.create({name:s_n, sex: "2", image_style: "/assets/styles/girl/#{s_n}.jpg"})
-#     end
+style_names = %w(cool classic casual simple)
+    style_names.each do |s_n|
+        Style.create({name:s_n, sex: "2", image_style: "/assets/styles/girl/#{s_n}.jpg"})
+    end
 
     
-# parttern_names = %w(striped dots check kamo animal logo )
-#     parttern_names.each do |p_n|
-#         Parttern.create({name:p_n, sex: "1", image_parttern: "/assets/partterns/boy/#{p_n}.jpg"})
-#     end
+parttern_names = %w(striped dots check kamo animal logo )
+    parttern_names.each do |p_n|
+        Parttern.create({name:p_n, sex: "1", image_parttern: "/assets/partterns/boy/#{p_n}.jpg"})
+    end
     
-# parttern_names = %w(striped dots check hearts flowers stars)
-#     parttern_names.each do |p_n|
-#         Parttern.create({name:p_n, sex: "2", image_parttern: "/assets/partterns/girl/#{p_n}.jpg"})
-#     end
+parttern_names = %w(striped dots check hearts flowers stars)
+    parttern_names.each do |p_n|
+        Parttern.create({name:p_n, sex: "2", image_parttern: "/assets/partterns/girl/#{p_n}.jpg"})
+    end
     
 
 dislike_names = %w(jeans harfpants sweaters bottonshirts downjacket parker)
