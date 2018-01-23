@@ -52,6 +52,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'dotenv-rails'
+  gem 'letter_opener_web'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -82,3 +83,5 @@ gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'
 
 
 gem 'jp_prefecture'
+
+

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :feeds
+  resources :contacts
   resources :children do
     collection do
       get :top_children_question
@@ -24,5 +24,9 @@ Rails.application.routes.draw do
   root to: 'kids#top'
   
   resource :charge
+  
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end  
   
 end
