@@ -1,15 +1,4 @@
 <%= form_with(model: @children, url: children_path, local: true) do |f| %>
-  <!--バリデーション・エラー処理-->
-  <% if @children.errors.any? %>
-  <div id="error_explanation">
-    <ul>
-      <% @children.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
-  </div>
-  <% end %>
-
   <!--#####好きな色の質問##### -->
   <div class="container basic color_question top_question">
     <div class="row basic">

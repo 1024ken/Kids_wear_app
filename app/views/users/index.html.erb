@@ -73,7 +73,7 @@
   
   
     <div class="closet-info col-lg-12 text-center">
-      <P><%= link_to '詳細(クローゼットの中身をみる）', child_path(child.id), class:"btn gray btn-default btn-lg"%></P>
+      <P><%= link_to '詳細(クローゼットの中身をみる）', child_path(child.id), class:"btn gray btn-default btn-lg" if child.paymented_on == true %></P>
       <P><%= link_to '削除', child_path(child.id), class:"btn gray btn-default btn-lg", method: :delete, data: { confirm: '子供の情報を削除しますがよろしいでしょうか？' } if child.user == current_user %></P>
       
     

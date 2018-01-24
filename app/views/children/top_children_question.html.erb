@@ -9,16 +9,7 @@
     </div>
   </div>
   
-  <%= form_with(model: @children, url: new_child_path, method: :get, local: true, html: {class: "form-horizontal"}) do |f| %>
-    <% if @children.errors.any? %>
-      <div id="error_explanation">
-        <ul>
-        <% @children.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-        </ul>
-      </div>
-   <% end %>
+ <%= form_with(model: @children, url: new_child_path, method: :get, local: true, html: {class: "form-horizontal"}) do |f| %>
    <div class="form-group">
      <label class="col-md-4 control-label" for="textinput">子供の名前</label>  
      <div class="col-md-6 offset-md-1">
