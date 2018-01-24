@@ -8,6 +8,6 @@ class ContactMailer < ApplicationMailer
         @contact = contact
         
         
-        mail to:"kengo9990@gmail.com", subject: "お問い合わせの確認メール"
+        mail to: @contact.email, subject: "お問い合わせの確認メール"
     end    
 end
