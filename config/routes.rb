@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
 
-  resources :contacts
+  resources :contacts do
+    collection do
+      post :confirm
+    end
+  end
+  
   resources :children do
     collection do
       get :top_children_question

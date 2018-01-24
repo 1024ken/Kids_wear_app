@@ -61,7 +61,7 @@ class ChargesController < ApplicationController
         @children.stripe_id=""
         @children.paymented_on = false
         @children.save
-        redirect_to users_path(@children), notice: '支払いが完了しまひた'
+        redirect_to users_path(@children), notice: '支払いが完了しました'
     end
     
 end

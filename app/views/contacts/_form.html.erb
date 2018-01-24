@@ -1,32 +1,23 @@
-<%= form_with(model: contact, local: true) do |form| %>
-  <% if contact.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
-
-      <ul>
-      <% contact.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :contact_name %>
+<%= form_with(model: @contact, url: confirm_contacts_path, local: true, html: {class: "form-horizontal"}) do |f| %>
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="textinput">名前</label>  
+      <div class="col-md-6 offset-md-1">
+        <%= f.text_field :name, class: "form-control" ,placeholder:"お名前", autofocus:true %>
+      </div>
   </div>
 
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email, id: :contact_email %>
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="textinput">メールアドレス</label>  
+      <div class="col-md-6 offset-md-1">
+        <%= f.text_field :email, class: "form-control" ,placeholder:"メールアドレス", autofocus:true %>
+      </div>
   </div>
-
-  <div class="field">
-    <%= form.label :content %>
-    <%= form.text_area :content, id: :contact_content %>
+  
+  <div class="form-group">
+    <label class="col-md-4 control-label" for="textinput">お問い合わせ内容</label>  
+      <div class="col-md-6 offset-md-1">
+        <%= f.text_area :content, class: "form-control" ,placeholder:"例えば、どのような服が届きますか?", autofocus:true %>
+      </div>
   </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+  <%= f.submit '確認画面へ', class:"btn btn-next" %>
 <% end %>
