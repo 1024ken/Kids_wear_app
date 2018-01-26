@@ -8,20 +8,21 @@ class AddressesController < ApplicationController
   
   def confirm
     # ユーザ情報画面（new)で入力された値（parameters）を取得。
-    @addresses = Address.new(address_params)
-    # render :new if @addresses.invalid?
-  end
+    @addresses = current_user.addresses.build(address_params)
+    @test = JpPrefecture::Prefecture.find(@addresses.prefecture_code)
+    
+    # バリデーションが通過すればtrue,引っかかればfalseを返す。
+    render :new if @addresses.invalid?
+  end  
   
   
   def create
-    @addresses = Address.create(address_params)
-    @addresses.user_id = current_user.id
-    # binding.pry
-    if @addresses.save
-      redirect_to new_charge_path
-    else  
-      render "new"
-    end
+    @addresses = current_user.addresses.build(address_params)
+      if @addresses.save
+        redirect_to new_charge_path
+      else  
+        render "new"
+      end
   end
   
   
@@ -47,7 +48,7 @@ class AddressesController < ApplicationController
   
   private
         def address_params
-            params.require(:address).permit(:name, :kana, :email, :phone_code, :post_code, :prefecture_code, :city_code, :street_code, :building_code)
+            params.require(:address).permit(:name, :kana, :email, :phone_code, :post_code, :prefecture_code, :city_code, :street_code, :building_code, :user_id)
         end
 end
 

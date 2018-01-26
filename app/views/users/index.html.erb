@@ -6,15 +6,19 @@
   <div class="row user">
     <div class="col-lg-12 text-center">
       <div class="user-name-text">
-        <h2 class="user-heading"><%= current_user.name %>さんのページ</h2>
+        <h2 class="user-heading"><%= current_user.name %>さん</h2>
           <p class="border"></p>
             <h3 class="user-subheading text-muted">ご登録いただいている情報を確認・編集することができます。</h3>
-            <% unless current_user.children.blank? %>
-             <p><%= link_to "子供を追加する", top_children_question_children_path(current_user.id), class:"btn gray btn-default btn-lg" %></p>
-            <% else %>
-              <%= link_to "はじめよう",top_children_question_children_path(current_user.id),class:"btn btn-start" %>
-            <% end %>  
-            <p><%= link_to "アカウント変更", edit_address_path(current_user.id), class:"btn gray btn-default btn-lg" unless current_user.addresses.blank? %></P>
+            
+            
+            <!--子供が空ではなかったら、表示-->
+            <p><%= link_to "子供を追加する", top_children_question_children_path(current_user.id), class:"btn gray btn-default btn-lg" unless current_user.children.blank? %></p>
+            
+            <!--子供が空だったら、表示。-->
+            <p><%= link_to "はじめよう",top_children_question_children_path(current_user.id),class:"btn btn-start" if current_user.children.blank? %></p>
+            
+            <!--アドレスが空でないなら、表示-->
+            <p><%= link_to "アカウント変更", edit_address_path(current_user.id), class:"btn gray btn-default btn-lg" unless current_user.children.blank? %></P>
     </div>
   </div>
 </div>  
@@ -73,7 +77,7 @@
   
   
     <div class="closet-info col-lg-12 text-center">
-      <P><%= link_to '詳細(クローゼットの中身をみる）', child_path(child.id), class:"btn gray btn-default btn-lg" if child.paymented_on == true %></P>
+      <P><%= link_to 'クローゼットの中身をみる', child_path(child.id), class:"btn gray btn-default btn-lg" if child.paymented_on == true %></P>
       <P><%= link_to '削除', child_path(child.id), class:"btn gray btn-default btn-lg", method: :delete, data: { confirm: '子供の情報を削除しますがよろしいでしょうか？' } if child.user == current_user %></P>
       
     
