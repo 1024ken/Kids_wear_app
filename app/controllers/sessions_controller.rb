@@ -9,11 +9,11 @@ class SessionsController < ApplicationController
     if user && user.authenticate(params[:session][:password])
       # ユーザーのブラウザ内のcookiesに暗号化されたユーザーIDが生成。
       session[:user_id] = user.id
-      #Userのshowアクションへ
+      
       flash[:notice] = "ログイン成功しました"
       redirect_to root_path(user.id)
     else
-      flash[:danger] = "ログイン失敗しました"
+      flash.now[:danger] = "メールアドレスもしくはパスワードが違います。"
       render "new"
     end  
   end

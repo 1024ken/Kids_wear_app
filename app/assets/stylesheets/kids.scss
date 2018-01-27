@@ -182,6 +182,20 @@ footer {
   text-align: center;
   background-color: #f0f4f5;
 }
+.flash {
+  color: white;
+  text-align: center;
+  margin-top: 54px; 
+  &__alert{
+    background-color: #2abfb3;
+  }
+  &__notice {
+    background-color: #2abfb3;
+  }
+  &__danger {
+    background-color: #ea352d;
+  }
+}
 
 
 

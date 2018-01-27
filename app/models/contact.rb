@@ -5,4 +5,9 @@ class Contact < ApplicationRecord
                 
     before_save { email.downcase! }
     
+    validates :content, presence: true, length: { in: 1..400 }
+    
+    
+    
+    
 end

@@ -3,10 +3,34 @@ ja:
     models:
       blog: "ブログ"
       user: "ユーザー"
+      address: "住所"
+      child: "子供"
+      contact: "お問い合わせ"
+  
+      
+      
     attributes:
       blog:
         title: "タイトル"
         content: "内容"
+      address:
+        name: "名前"
+        email: "メールアドレス"
+        kana: "カナ"
+        phone_code: "電話番号"
+        post_code: "郵便番号"
+        prefecture_code: "都道府県"
+        city_code: "市区町村"
+        street_code: "番地"
+        building_code: "建物"
+      contact:
+        name: "名前"
+        email: "メールアドレス"
+        content: "お問い合わせ内容"
+        
+        
+        
+        
       user:
         title: "タイトル"
         name: "名前"
