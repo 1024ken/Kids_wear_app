@@ -1,6 +1,5 @@
 <div class="container">
   <div class="container basic">
-
     <div class="row basic">
       <div class="col-lg-12 text-center">
         <div class="basic-text">
@@ -13,63 +12,63 @@
 　　　
     <%=form_with(model: @addresses, local: true, url: addresses_path, html: {class: "form-horizontal"}) do |f| %>
     <div class="form-group">
-      <label class="col-md-6 control-label">名前:</label>  
+      <label class="col-md-6 control-label">名前:</label>
       <div class="col-md-6 offset-md-1 confirm-adjust">
         <%= f.hidden_field :name%>
         <%= current_user.name %>
       </div>
     </div>
-    
+
     <div class="form-group">
-      <label class="col-md-6 control-label">メールアドレス:</label>  
+      <label class="col-md-6 control-label">メールアドレス:</label>
       <div class="col-md-6 offset-md-1 confirm-adjust">
         <%= f.hidden_field :email%>
         <%= current_user.email %>
       </div>
     </div>
-      
+
     <div class="form-group">
-      <label class="col-md-6 control-label">電話番号:</label>  
+      <label class="col-md-6 control-label">電話番号:</label>
       <div class="col-md-6 offset-md-1 confirm-adjust">
         <%= f.hidden_field :phone_code%>
         <%= @addresses.phone_code %>
       </div>
     </div>
-      
+
     <div class="form-group">
-      <label class="col-md-6 control-label">郵便番号:</label>  
+      <label class="col-md-6 control-label">郵便番号:</label>
       <div class="col-md-6 offset-md-1 confirm-adjust">
         <%= f.hidden_field :post_code%>
         <%= @addresses.post_code %>
       </div>
     </div>
-      
+
     <div class="form-group">
-      <label class="col-md-6 control-label">都道府県:</label>  
+      <label class="col-md-6 control-label">都道府県:</label>
       <div class="col-md-6 offset-md-1 confirm-adjust">
         <%= f.hidden_field :prefecture_code%>
-        <%= @test.name %>
+        <%= @change_prefecture_code.name %>
       </div>
     </div>
-      
+
     <div class="form-group">
-      <label class="col-md-6 control-label">市区町村:</label>  
+      <label class="col-md-6 control-label">市区町村:</label>
       <div class="col-md-6 offset-md-1 confirm-adjust">
         <%= f.hidden_field :city_code%>
         <%= @addresses.city_code %>
       </div>
     </div>
-    
+
     <div class="form-group">
-      <label class="col-md-6 control-label">番地:</label>  
+      <label class="col-md-6 control-label">番地:</label>
       <div class="col-md-6 offset-md-1 confirm-adjust">
         <%= f.hidden_field :street_code%>
         <%= @addresses.street_code %>
       </div>
     </div>
-      
+
     <div class="form-group">
-      <label class="col-md-6 control-label">建物:</label>  
+      <label class="col-md-6 control-label">建物:</label>
       <div class="col-md-6 offset-md-1 confirm-adjust">
         <%= f.hidden_field :building_code%>
         <%= @addresses.building_code %>
@@ -90,8 +89,8 @@
     <%= f.hidden_field :city %>
     <%= f.hidden_field :street %>
     <%= f.hidden_field :building %>
-    
+
     <%= f.submit "戻る", class: "btn btn-back", name: "back" %>
-  <% end %>  
+  <% end %>
   </div>
 </div>

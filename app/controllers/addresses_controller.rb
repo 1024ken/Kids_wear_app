@@ -1,41 +1,40 @@
 class AddressesController < ApplicationController
-  
+
   # new→confirm→create
-  
+
   def new
       @addresses = Address.new
-  end  
-  
+  end
+
   def confirm
-    # ユーザ情報画面（new)で入力された値（parameters）を取得。
+    # ユーザ情報画面（new)で入力された値（parameters）を取得し、user_idをぶち込む。
     @addresses = current_user.addresses.build(address_params)
-    @test = JpPrefecture::Prefecture.find(@addresses.prefecture_code)
-    
+    @change_prefecture_code = JpPrefecture::Prefecture.find(@addresses.prefecture_code)
+
     # バリデーションが通過すればtrue,引っかかればfalseを返す。
     render :new if @addresses.invalid?
-  end  
-  
-  
+  end
+
+
   def create
     @addresses = current_user.addresses.build(address_params)
       if @addresses.save
         redirect_to new_charge_path
-      else  
+      else
         render "new"
       end
   end
-  
-  
-  
-   
-  
+
+
+
+
+
   #アカウント変更（住所等）
   def edit
     @addresses = Address.find_by(user_id: current_user.id)
-    # @addresses = Address.where(user_id: current_user.id)
-
   end
-  
+
+
   def update
     @addresses = Address.find_by(user_id: current_user.id)
     if @addresses.update(address_params)
@@ -43,13 +42,11 @@ class AddressesController < ApplicationController
     else
       flash.now[:alert] = "更新が失敗しました"
       render "edit"
-    end  
+    end
   end
-  
+
   private
         def address_params
             params.require(:address).permit(:name, :kana, :email, :phone_code, :post_code, :prefecture_code, :city_code, :street_code, :building_code, :user_id)
         end
 end
-
- 

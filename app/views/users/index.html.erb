@@ -1,32 +1,28 @@
 <!--#####マイページ画面#####-->
-
-<p id="notice"><%= notice %></p>
-
 <div class="container user">
   <div class="row user">
     <div class="col-lg-12 text-center">
       <div class="user-name-text">
         <h2 class="user-heading"><%= current_user.name %>さん</h2>
           <p class="border"></p>
-            <h3 class="user-subheading text-muted">お子様の情報を確認することができます。</h3>
-            
-            
+            <h3 class="user-subheading text-muted">子供の情報を確認することができます。</h3>
+
+
             <!--子供が空ではなかったら、表示-->
             <p><%= link_to "子供を追加する", top_children_question_children_path(current_user.id), class:"btn gray btn-default btn-lg" unless current_user.children.blank? %></p>
-            
+
             <!--子供が空だったら、表示。-->
             <p><%= link_to "はじめよう",top_children_question_children_path(current_user.id),class:"btn btn-start" if current_user.children.blank? %></p>
-            
+
             <!--アドレスが空でないなら、表示-->
             <p><%= link_to "アカウント変更", edit_address_path(current_user.id), class:"btn gray btn-default btn-lg" unless current_user.children.blank? %></P>
     </div>
   </div>
-</div>  
+</div>
 
 <div class="container child">
 <!--#####子供情報#####  -->
   <% @children.each do |child| %>
-  
     <div class="row child-box">
       <div class="col-md-6">
         <div class="child-image">
@@ -35,23 +31,23 @@
               <%= f.file_field :image %>
               <%= f.hidden_field :image_cache %>
               <%= f.submit "子供の画像を登録する" %>
-            <% end %>  
+            <% end %>
         </div>
       </div>
-    
-        
+
+
     <div class="col-md-6">
       <table class="child-detail-table">
         <tr>
           <th>名前</th>
           <td><%= child.name %>さん</td>
         </tr>
-                
+
         <tr>
           <th>誕生日</th>
           <td><%= child.birthday %></td>
         </tr>
-                
+
         <tr>
           <th>性別</th>
           <td>
@@ -59,12 +55,12 @@
             <%= "女の子" if child.sex == "2" %>
           </td>
         </tr>
-                
+
         <tr>
           <th>サイズ</th>
           <td><%= child.size.to_s %></td>
         </tr>
-                
+
         <tr>
           <th>ステータス</th>
           <td>
@@ -74,17 +70,16 @@
         </tr>
       </table>
     </div>
-  
-  
+
+
     <div class="closet-info col-lg-12 text-center">
       <P><%= link_to 'クローゼットの中身をみる', child_path(child.id), class:"btn gray btn-default btn-lg" if child.paymented_on == true %></P>
       <P><%= link_to '削除', child_path(child.id), class:"btn gray btn-default btn-lg", method: :delete, data: { confirm: '子供の情報を削除しますがよろしいでしょうか？' } if child.user == current_user %></P>
-      
-    
+
+
       <P><%= link_to 'サブスクリプションを解約する', charge_path(params: {child_id: child.id}), class:"btn red btn-default btn-lg", method: :delete, data: { confirm: 'サブスクリプションを解約してもよろしいでしょうか？' } unless child.stripe_id.blank? %></P>
       <P><%= link_to '定期購入をはじめる', new_charge_path(params: {child_id: child.id}), class:"btn red btn-default btn-lg" if child.paymented_on == false %> </P>
     </div>
       <% end %>
   </div>
 </div>
-

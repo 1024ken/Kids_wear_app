@@ -39,8 +39,8 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
   gem 'selenium-webdriver'
-  gem 'pry-rails' 
-  gem 'better_errors' 
+  gem 'pry-rails'
+  gem 'better_errors'
   gem 'binding_of_caller'
 end
 
@@ -58,7 +58,6 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
-# gem 'rails-ujs'
 gem 'stripe'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
@@ -69,7 +68,7 @@ gem 'therubyracer'
 gem 'bcrypt', '3.1.11'
 
 
-gem 'faker'
+
 
 gem 'gon'
 
@@ -84,4 +83,10 @@ gem 'bootstrap3-datetimepicker-rails', '~> 4.17.47'
 
 gem 'jp_prefecture'
 
-
+#RSpec
+gem 'rspec-rails'
+gem 'database_cleaner'
+gem "launchy"
+gem "selenium-webdriver"
+gem 'faker'
+gem 'spring-commands-rspec'
