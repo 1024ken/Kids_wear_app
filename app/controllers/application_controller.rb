@@ -1,8 +1,9 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   include SessionsHelper
-
-  before_action :authenticate_customer!
+  
+# ログインしていないCustomerは強制的にログイン画面にリダイレクト
+  # before_action :authenticate_customer!
   # before_action :configure_permitted_parameters, if: :devise_controller?
 
 # protected

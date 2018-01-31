@@ -1,4 +1,4 @@
-<h2>!!!!!!! <%= resource_name.to_s.humanize %><%= current_customer.email %></h2>
+<h2>アカウント登録・編集 <%= resource_name.to_s.humanize %><%= current_customer.email %></h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= devise_error_messages! %>
@@ -41,3 +41,91 @@
 <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
 <%= link_to "Back", :back %>
+
+
+
+<!--#####マイページ画面#####-->
+<div class="container user">
+  <div class="row user">
+    <div class="col-lg-12 text-center">
+      <div class="user-name-text">
+        <h2 class="user-heading"><%= current_customer.name %>さん</h2>
+          <p class="border"></p>
+            <h3 class="user-subheading text-muted">子供の情報を確認することができます。</h3>
+
+
+            <!--子供が空ではなかったら、表示-->
+            <p><%= link_to "子供を追加する", top_children_question_children_path(current_customer.id), class:"btn gray btn-default btn-lg" unless current_customer.children.blank? %></p>
+
+            <!--子供が空だったら、表示。-->
+            <p><%= link_to "はじめよう",top_children_question_children_path(current_customer.id),class:"btn btn-start" if current_customer.children.blank? %></p>
+
+            <!--アドレスが空でないなら、表示-->
+            <p><%= link_to "アカウント変更", edit_address_path(current_customer.id), class:"btn gray btn-default btn-lg" unless current_customer.children.blank? %></P>
+    </div>
+  </div>
+</div>
+
+<div class="container child">
+<!--#####子供情報#####  -->
+  <% @children.each do |child| %>
+    <div class="row child-box">
+      <div class="col-md-6">
+        <div class="child-image">
+          <%= image_tag child.image unless child.image.blank? %>
+            <%= form_for(child, url: child_path(child), method: :put) do |f| %>
+              <%= f.file_field :image %>
+              <%= f.hidden_field :image_cache %>
+              <%= f.submit "子供の画像を登録する" %>
+            <% end %>
+        </div>
+      </div>
+
+
+    <div class="col-md-6">
+      <table class="child-detail-table">
+        <tr>
+          <th>名前</th>
+          <td><%= child.name %>さん</td>
+        </tr>
+
+        <tr>
+          <th>誕生日</th>
+          <td><%= child.birthday %></td>
+        </tr>
+
+        <tr>
+          <th>性別</th>
+          <td>
+            <%= "男の子" if child.sex == "1" %>
+            <%= "女の子" if child.sex == "2" %>
+          </td>
+        </tr>
+
+        <tr>
+          <th>サイズ</th>
+          <td><%= child.size.to_s %></td>
+        </tr>
+
+        <tr>
+          <th>ステータス</th>
+          <td>
+            <%= "会員" if child.paymented_on == true%>
+            <%= "非会員" if child.paymented_on == false%>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+
+    <div class="closet-info col-lg-12 text-center">
+      <P><%= link_to 'クローゼットの中身をみる', child_path(child.id), class:"btn gray btn-default btn-lg" if child.paymented_on == true %></P>
+      <P><%= link_to '削除', child_path(child.id), class:"btn gray btn-default btn-lg", method: :delete, data: { confirm: '子供の情報を削除しますがよろしいでしょうか？' } if child.customer == current_customer %></P>
+
+
+      <P><%= link_to 'サブスクリプションを解約する', charge_path(params: {child_id: child.id}), class:"btn red btn-default btn-lg", method: :delete, data: { confirm: 'サブスクリプションを解約してもよろしいでしょうか？' } unless child.stripe_id.blank? %></P>
+      <P><%= link_to '定期購入をはじめる', new_charge_path(params: {child_id: child.id}), class:"btn red btn-default btn-lg" if child.paymented_on == false %> </P>
+    </div>
+      <% end %>
+  </div>
+</div>

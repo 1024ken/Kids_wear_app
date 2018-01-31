@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180131040545) do
+ActiveRecord::Schema.define(version: 20180131044806) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20180131040545) do
     t.string "street_code"
     t.string "building_code"
     t.integer "user_id"
+    t.integer "customer_id"
   end
 
   create_table "children", force: :cascade do |t|
@@ -41,6 +42,7 @@ ActiveRecord::Schema.define(version: 20180131040545) do
     t.boolean "paymented_on", default: false, null: false
     t.string "stripe_id"
     t.date "birthday"
+    t.integer "customer_id"
   end
 
   create_table "color_children", force: :cascade do |t|

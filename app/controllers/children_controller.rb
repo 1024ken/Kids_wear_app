@@ -4,14 +4,14 @@ class ChildrenController < ApplicationController
     def top_children_question
         # 最初の戻るボタン
         if params[:back]
-            @children = current_user.children.build
+            @children = current_customer.children.build
             @children.name = params["name"]
             @children.sex = params["sex"]
             @children.size = params["size"]
             @children.birthday = params["birthday"]
-        else    
+        else
         # user_idを含んでインスタス化
-            @children = current_user.children.build
+            @children = current_customer.children.build
         end
     end
 
@@ -20,7 +20,8 @@ class ChildrenController < ApplicationController
 
     # パーソナライズするための質問
     def new
-          @children = current_user.children.build(children_params)
+          @children = current_customer.children.build(children_params)
+
 
           if @children.invalid?
               render "top_children_question"
@@ -37,7 +38,8 @@ class ChildrenController < ApplicationController
 
 
     def create
-        @children = current_user.children.build(children_params)
+        # 子供の情報を保存
+        @children = current_customer.children.build(children_params)
         @children.save
 
         # クリックの有無にかかわらず、画像すべての情報をViewから取得。
@@ -48,8 +50,6 @@ class ChildrenController < ApplicationController
             if value == "1"
               @color_children = ColorChild.new(child_id: @children.id, color_id: key)
               @color_children.save
-            else
-              puts '0だよ！保存しないお'
             end
         end
 
@@ -60,8 +60,6 @@ class ChildrenController < ApplicationController
             if value == "1"
               @style_children = StyleChild.new(child_id: @children.id, style_id: key)
               @style_children.save
-            else
-              puts "0だよ。保存しないよ"
             end
         end
 
@@ -72,8 +70,6 @@ class ChildrenController < ApplicationController
             if value == "1"
               @parttern_children = PartternChild.new(child_id: @children.id, parttern_id: key)
               @parttern_children.save
-            else
-              puts "保存しない"
             end
         end
 
@@ -84,23 +80,19 @@ class ChildrenController < ApplicationController
             if value == "1"
               @dislike_children = DislikeChild.new(child_id: @children.id, dislike_id: key)
               @dislike_children.save
-            else
-              puts "保存しないoooo"
             end
         end
 
-        if current_user.addresses.blank?
+        if current_customer.addresses.blank?
           redirect_to new_address_path
         else
           render template: "charges/new"
         end
+    end
 
-   end
 
-
-  # 子供詳細画面
+  # ユーザーのマイページから子供詳細画面
    def show
-    #  @children = Child.find_by(user_id: current_user.id)
      @children = Child.find(params[:id])
    end
 
@@ -108,17 +100,16 @@ class ChildrenController < ApplicationController
 
 # Userのマイページから子供削除
    def destroy
-    #  @children = Child.find_by(user_id: current_user.id)
      @children = Child.find(params[:id])
-    #  binding.pry
      @children.destroy
-     redirect_to users_path, notice: '子供の情報を削除されました'
+     # binding.pry
+     redirect_to edit_customer_registration_path, notice: '子供の情報を削除されました'
    end
 
    def update
        @children = Child.find(params[:id])
       if @children.update(children_params)
-          redirect_to users_path, notice: "更新しました。"
+          redirect_to edit_customer_registration_path, notice: "更新しました。"
       else
           render :edit
       end

@@ -4,4 +4,12 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
          :lockable, :timeoutable
+
+
+   has_many :children
+
+   has_many :addresses
+
+   mount_uploader :image, ImageUploader
+
 end
