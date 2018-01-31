@@ -90,3 +90,5 @@ gem "launchy"
 gem "selenium-webdriver"
 gem 'faker'
 gem 'spring-commands-rspec'
+
+gem 'devise'

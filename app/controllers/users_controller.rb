@@ -5,9 +5,9 @@ class UsersController < ApplicationController
 
   def index
     @children = Child.where(user_id: current_user.id)
-  end 
-  
-  
+  end
+
+
   def new
     @user = User.new
   end
@@ -19,13 +19,13 @@ class UsersController < ApplicationController
       redirect_to new_session_path(@user.id)
       else
       render 'new'
-      end 
+      end
   end
-  
-  
 
-  
-  
+
+
+
+
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
