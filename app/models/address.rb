@@ -14,6 +14,5 @@ class Address < ApplicationRecord
     validates :street_code, presence: true
 
 
-    belongs_to :user
     belongs_to :customer
 end

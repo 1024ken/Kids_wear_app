@@ -1,147 +1,98 @@
+<!-- パーソナライズな質問 -->
 <%= form_with(model: @children, url: children_path, local: true) do |f| %>
+
   <!--#####好きな色の質問##### -->
   <div class="container basic color_question top_question">
-    <div class="row basic">
-      <div class="col-lg-12 text-center">
-        <div class="basic-text">
-          <h2 class="basic-heading">好きな色</h2>
-            <p class="border"></p>
-              <h3 class="basic-subheading text-muted">お子様が好きな色を教えてください。</h3>
-        </div>
+    <%= render partial: "shared/basic-title-rule", locals: { heading_text: "好きな色", subheading_text: "子供が好きな色を教えてください。" } %>
+      <div class="container image-group">
+        <% @colors.each do |color| %>
+          <div class="col-xs-6 col-md-4">
+            <div class="image_box">
+              <%= f.label color.name %><br>
+              <%= image_tag(color.image_color, class: "image")%>
+              <%= f.check_box :"[color][#{color.id}]", class:"check_box"%>
+            </div>
+          </div>
+        <% end %>
       </div>
-    </div>
-  
-    <div class="container image-group">
-    <% @colors.each do |color| %>
-      <div class="col-xs-6 col-md-4">
-        <div class="image_box">
-          <%= f.label color.name %><br>
-          <%= image_tag(color.image_color, class: "image")%>
-          <%= f.check_box :"[color][#{color.id}]", class:"check_box"%>
-        </div>    
-      </div>
-    <% end %>
-    </div>
-    <input type="button" value="次へ" class="btn btn-next" onClick="next_btn_style()">
-    <%= link_to '戻る', top_children_question_children_path(back: true, name: @children.name, sex: @children.sex, birthday: @children.birthday, size: @children.size), method: :get, class: "btn btn-back" %>
+      <input type="button" value="次へ" class="btn btn-next" onClick="next_btn_style()">
+      <%= link_to '戻る', top_children_question_children_path(back: true, name: @children.name, sex: @children.sex, birthday: @children.birthday, size: @children.size), method: :get, class: "btn btn-back" %>
   </div>
+
 
   <!--#####好きなスタイルの質問  性別で出す画像は変わる#####-->
   <div class ="container basic style_question hidden">
-    <div class="row basic">
-      <div class="col-lg-12 text-center">
-        <div class="basic-text">
-          <h2 class="basic-heading">好きなスタイル</h2>
-            <p class="border"></p>
-              <h3 class="basic-subheading text-muted">お子様が好きなスタイルを教えてください。</h3>
-        </div>
-      </div>
-    </div>
-            
-    <div class="container image-group">        
-    <% @styles.each do |style| %>
-      <div class="col-xs-6 col-md-4">
-        <div class="image_box">
-          <%= f.label style.name %><br>
-          <%= image_tag(style.image_style, class: "image")%>
-          <%= f.check_box :"[style][#{style.id}]", class:"check_box"%>
-        </div>    
-      </div>
-    <% end %>
-    </div>  
-    <input id="second_btn" type="button" value="次へ" class="btn btn-next" onClick="next_btn_parttern()">
-    <input type="button" value="戻る" class="btn btn-back" onClick="back_btn_color()">
-  </div>    
-  
-  <!--#####好きなパターンの質問  性別で出す画像は変わる#####-->
-  <div class ="container basic parttern_question hidden">
-    <div class="row basic">
-      <div class="col-lg-12 text-center">
-        <div class="basic-text">
-          <h2 class="basic-heading">好きな服のパターン</h2>
-            <p class="border"></p>
-              <h3 class="basic-subheading text-muted">お子様が好きな服のパターンを教えてください。</h3>
-        </div>
-      </div>
-    </div>
-    <div class="container image-group">      
-    <% @partterns.each do |parttern| %>
-      <div class="col-xs-6 col-md-4">
-        <div class="image_box">
-          <%= f.label parttern.name %><br>
-          <%= image_tag(parttern.image_parttern, class: "image")%>
-          <%= f.check_box :"[parttern][#{parttern.id}]", class:"check_box"%>
-        </div>    
-      </div>
-    <% end %>
-    </div>    
-    <input id="fourth_btn" type="button" value="次へ" class="btn btn-next" onClick="next_btn_dislike()">
-    <input type="button" value="戻る" class="btn btn-back" onClick="back_btn_style()">
-  </div>    
-  
-  <!--#####Dislikeな服の質問 性別で出す画像が変わる#####-->
-  <div class ="container basic dislike_question hidden">
-    <div class="row basic">
-      <div class="col-lg-12 text-center">
-        <div class="basic-text">
-          <h2 class="basic-heading">苦手な服</h2>
-            <p class="border"></p>
-              <h3 class="basic-subheading text-muted">お子様が苦手な服パターンを教えてください。</h3>
-        </div>
-      </div>
-    </div>
-    <div class="container image-group">
-    <% @dislikes.each do |dislike| %>
-      <div class="col-xs-6 col-md-4">
-        <div class="image_box">
-          <%= f.label dislike.name %><br>
-          <%= image_tag(dislike.image_dislike, class: "image")%>
-          <%= f.check_box :"[dislike][#{dislike.id}]", class:"check_box"%>
-        </div>    
-      </div>
-    <% end %>
-    </div>    
-    <input id="fifth_btn" type="button" value="次へ" class="btn btn-next" onClick="next_btn_comment()">
-    <input type="button" value="戻る" class="btn btn-back" onClick="back_btn_parttern()">
-  </div>    
-  
-  <!--#####追加コメントの質問##### -->
-  <div class ="container basic comment_question hidden">
-    <div class="row basic">
-      <div class="col-lg-12 text-center">
-        <div class="basic-text">
-          <h2 class="basic-heading">伝えておきたいこと</h2>
-            <p class="border"></p>
-              <h3 class="basic-subheading text-muted">これまでの質問以外に、何か考慮すべきことがあれば教えてください。</h3>
-        </div>
-      </div>
-    </div>
-    <div class="container image-group">
-      <div class="col-lg-12">
-        <%= f.fields_for :comments do |comments_form| %>
-          <%= comments_form.text_area :content, class:"comment-size" %><br />
+    <%= render partial: "shared/basic-title-rule", locals: { heading_text: "好きなスタイル", subheading_text: "子供が好きなスタイルを教えてください。" } %>
+      <div class="container image-group">
+        <% @styles.each do |style| %>
+          <div class="col-xs-6 col-md-4">
+            <div class="image_box">
+              <%= f.label style.name %><br>
+              <%= image_tag(style.image_style, class: "image")%>
+              <%= f.check_box :"[style][#{style.id}]", class:"check_box"%>
+            </div>
+          </div>
         <% end %>
       </div>
-    </div>
-    <input type="button" value="次へ" class="btn btn-next" onClick="next_btn_register()">
-    <input type="button" value="戻る" class="btn btn-back" onClick="back_btn_dislike()">
+      <input id="second_btn" type="button" value="次へ" class="btn btn-next" onClick="next_btn_parttern()">
+      <input type="button" value="戻る" class="btn btn-back" onClick="back_btn_color()">
   </div>
-  
+
+  <!--#####好きなパターンの質問  性別で出す画像は変わる#####-->
+  <div class ="container basic parttern_question hidden">
+    <%= render partial: "shared/basic-title-rule", locals: { heading_text: "好きな柄", subheading_text: "子供が好きな柄を教えてください。" } %>
+    <div class="container image-group">
+      <% @partterns.each do |parttern| %>
+        <div class="col-xs-6 col-md-4">
+          <div class="image_box">
+            <%= f.label parttern.name %><br>
+            <%= image_tag(parttern.image_parttern, class: "image")%>
+            <%= f.check_box :"[parttern][#{parttern.id}]", class:"check_box"%>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <input id="fourth_btn" type="button" value="次へ" class="btn btn-next" onClick="next_btn_dislike()">
+    <input type="button" value="戻る" class="btn btn-back" onClick="back_btn_style()">
+  </div>
+
+  <!--#####Dislikeな服の質問 性別で出す画像が変わる#####-->
+  <div class ="container basic dislike_question hidden">
+    <%= render partial: "shared/basic-title-rule", locals: { heading_text: "苦手な服", subheading_text: "子供が苦手な服を教えてください。" } %>
+    <div class="container image-group">
+      <% @dislikes.each do |dislike| %>
+        <div class="col-xs-6 col-md-4">
+          <div class="image_box">
+            <%= f.label dislike.name %><br>
+            <%= image_tag(dislike.image_dislike, class: "image")%>
+            <%= f.check_box :"[dislike][#{dislike.id}]", class:"check_box"%>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <input id="fifth_btn" type="button" value="次へ" class="btn btn-next" onClick="next_btn_comment()">
+    <input type="button" value="戻る" class="btn btn-back" onClick="back_btn_parttern()">
+  </div>
+
+  <!--#####追加コメントの質問##### -->
+  <div class ="container basic comment_question hidden">
+    <%= render partial: "shared/basic-title-rule", locals: { heading_text: "伝えておきたいこと", subheading_text: "これまでの質問以外に他に考慮すべきことがあれば教えてください。" } %>
+      <div class="container image-group">
+          <div class="col-lg-12">
+            <%= f.fields_for :comments do |comments_form| %>
+              <%= comments_form.text_area :content, class:"comment-size" %><br />
+            <% end %>
+          </div>
+        </div>
+        <input type="button" value="次へ" class="btn btn-next" onClick="next_btn_register()">
+        <input type="button" value="戻る" class="btn btn-back" onClick="back_btn_dislike()">
+      </div>
+
   <!--確認画面-->
   <div class ="container basic register_question hidden">
-    <div class="row basic">
-      <div class="col-lg-12 text-center">
-        <div class="basic-text">
-          <h2 class="basic-heading">これまでの質問を登録しますか？</h2>
-            <p class="border"></p>
-              <h3 class="basic-subheading text-muted">
-                登録された情報を元にスタイリストがパーソナライズされた商品をセレクトします。
-                <br><br>宜しければ、お届け先を入力するへ進んでください。</h3>
-        </div>
-      </div>
-    </div>
+    <%= render partial: "shared/basic-title-rule", locals: { heading_text: "これまで質問の登録", subheading_text: "これまでの質問を登録します。宜しければ次へ進んでください。" } %>
     <!--childrenコントローラー：createアクションへ-->
-    <%= f.submit "お届け先を入力する", class:"btn btn-next" %>
+    <%= f.submit "次へ", class:"btn btn-next" %>
     <input type="button" value="戻る" class="btn btn-back" onClick="back_btn_comment()">
   </div>
   <!--form_with-->
@@ -151,17 +102,3 @@
     <%= f.hidden_field :birthday %>
     <%= f.hidden_field :size %>
 <% end %>
-
-
-
-
-
-<!--<div class="top_question">-->
-<!--  <#%=form_with(model: @children, local: true, url: top_children_question_children_path, method:"get") do |f| %>-->
-<!--    <#%= f.hidden_field :name %>-->
-<!--    <#%= f.hidden_field :sex %>-->
-<!--    <#%= f.hidden_field :birthday %>-->
-<!--    <#%= f.hidden_field :size %>-->
-<!--    <#%= f.submit "戻る", class: "btn btn-back", name: "back" %>-->
-<!--  <#% end %>-->
-<!--</div>-->

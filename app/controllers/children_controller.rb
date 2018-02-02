@@ -91,33 +91,34 @@ class ChildrenController < ApplicationController
     end
 
 
-  # ユーザーのマイページから子供詳細画面
+  # Customerのマイページから子供詳細画面
    def show
      @children = Child.find(params[:id])
    end
 
 
 
-# Userのマイページから子供削除
+# Customerのマイページから子供削除
    def destroy
      @children = Child.find(params[:id])
      @children.destroy
-     # binding.pry
      redirect_to edit_customer_registration_path, notice: '子供の情報を削除されました'
    end
+
+
 
    def update
        @children = Child.find(params[:id])
       if @children.update(children_params)
           redirect_to edit_customer_registration_path, notice: "更新しました。"
       else
-          render :edit
+          render action: "edit"
       end
    end
 
     private
         def children_params
-            params.require(:child).permit(:id, :name, :birthday, :sex, :color, :size, :style, :parttern, :dislike, :content, :image, comments_attributes: [:id, :content])
+            params.require(:child).permit(:id, :name, :birthday, :sex, :color, :size, :style, :parttern, :dislike, :content, :image, :image_cache, comments_attributes: [:id, :content])
         end
 
 end

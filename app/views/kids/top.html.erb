@@ -9,12 +9,12 @@
           </div>
             <div class="sub-text">月額5000円で季節に応じてパーソナライズされた子供服を届けます。</div>
             <div class="start">
-            <% if logged_in? && current_user.children.empty? %>
-              <%= link_to "はじめよう",top_children_question_children_path(current_user.id),class:"btn btn-start" %>
+            <% if signed_in? && current_customer.children.empty? %>
+              <%= link_to "はじめよう",top_children_question_children_path(current_customer.id),class:"btn btn-start" %>
             <% end %>
             </div>
           </div>
-      </div>    
+      </div>
     </div>
   </div>
 </header>
@@ -34,17 +34,17 @@
       <div class="col-xs-12 col-md-6" style="padding:0;">
         <img src="<%= asset_path "service.jpg" %>">
       </div>
-  
+
       <div class="col-xs-12 col-md-6" style="padding:0;">
         <h3 class="top-introduction-subheading text-center">
           レンタルでも購入でもない、あなただけのクローゼット<br>子供の成長に合わせて、あなただけの子供服をお届けする<br>月額制ファッションレンタルサービス
         </h3>
-        <% if logged_in? && current_user.children.empty? %>
-          <%= link_to "はじめよう",top_children_question_children_path(current_user.id),class:"btn btn-start" %>
+        <% if signed_in? && current_customer.children.empty? %>
+          <%= link_to "はじめよう",top_children_question_children_path(current_customer.id),class:"btn btn-start" %>
         <% end %>
       </div>
     </div>
-  </div>  
+  </div>
 </section>
 
 
@@ -71,10 +71,10 @@
         　　<P class="third-introduction-description">
         　　  お子様の好きなものを教えてください。
             <br>約1分であなたにあった服をお届け。
-            
+
             </P>
       </div>
-  
+
       <div class="col-xs-12 col-md-3" style="padding:0;">
         <h3 class="text-center adjust">
         <span class="second-introduction-num">2</span>
@@ -86,7 +86,7 @@
             <br>到着後、90日間であれば何度でも無料交換。
             </P>
       </div>
-      
+
       <div class="col-xs-12 col-md-3" style="padding:0;">
         <h3 class="text-center adjust">
         <span class="second-introduction-num">3</span>
@@ -98,7 +98,7 @@
             <br>次回のお届けのレコメンド精度がアップ。
             </P>
       </div>
-      
+
       <div class="col-xs-12 col-md-3" style="padding:0;">
         <h3 class="text-center adjust">
         <span class="second-introduction-num">4</span>
@@ -111,11 +111,5 @@
             </P>
       </div>
     </div>
-  </div>  
+  </div>
 </section>
-
-
-
-
-
-

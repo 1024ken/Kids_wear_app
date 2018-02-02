@@ -4,19 +4,7 @@ class Customers::RegistrationsController < Devise::RegistrationsController
 
   # アカウント情報一覧
   def edit
-    # binding.pry
-    @children = Child.where(customer_id: current_customer.id)
+    @children = Child.where(customer_id: current_customer.id).order('created_at desc')
     super
   end
-
-  # def new
-  #   @customer = Customer.new
-  # end
-  #
-  #
-  # def destroy
-  #   @children = Child.find(params[:id])
-  #   @children.destroy
-  #   redirect_to edit_customer_registration_path
-  # end
 end

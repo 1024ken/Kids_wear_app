@@ -1,21 +1,12 @@
-<div class="container">
+ <!-- お届け先確認画面 -->
   <div class="container basic">
-    <div class="row basic">
-      <div class="col-lg-12 text-center">
-        <div class="basic-text">
-          <h2 class="basic-heading">アカウント情報の確認</h2>
-            <p class="border"></p>
-              <h3 class="basic-subheading text-muted">以下の内容で会員情報を登録しますか。</h3>
-        </div>
-      </div>
-    </div>
-　　　
+    <%= render partial: "shared/basic-title-rule", locals: { heading_text: "アカウント情報の確認", subheading_text: "以下の内容でアカウント情報を登録しますか。" } %>
     <%=form_with(model: @addresses, local: true, url: addresses_path, html: {class: "form-horizontal"}) do |f| %>
     <div class="form-group">
       <label class="col-md-6 control-label">名前:</label>
       <div class="col-md-6 offset-md-1 confirm-adjust">
         <%= f.hidden_field :name%>
-        <%= current_user.name %>
+        <%= current_customer.name %>
       </div>
     </div>
 
@@ -23,7 +14,7 @@
       <label class="col-md-6 control-label">メールアドレス:</label>
       <div class="col-md-6 offset-md-1 confirm-adjust">
         <%= f.hidden_field :email%>
-        <%= current_user.email %>
+        <%= current_customer.email %>
       </div>
     </div>
 
