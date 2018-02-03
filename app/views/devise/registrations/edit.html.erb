@@ -1,0 +1,141 @@
+<!-- マイページ画面 -->
+
+<!-- <h2>アカウント登録・編集 </h2>
+
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= devise_error_messages! %>
+  <div class="form-group">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, class: "form-control col-md-5 col-sm", placeholder: "Enter email" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, class: "form-control col-md-5 col-sm", placeholder: "Username" %>
+  </div>
+
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+    <%= f.password_field :password, autocomplete: "off", class: "form-control col-md-5 col-sm", placeholder: "Password" %>
+    <% if @minimum_password_length %>
+      <br />
+      <em><%= @minimum_password_length %> characters minimum</em>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control col-md-5 col-sm", placeholder: "Password confirmation" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+    <%= f.password_field :current_password, autocomplete: "off", class: "form-control col-md-5 col-sm", placeholder: "Current password" %>
+  </div>
+
+  <div class="actions pb-5">
+    <%= f.submit "Update", class: "btn btn-primary" %>
+  </div>
+<% end %>
+
+<h3>Cancel my account</h3>
+
+<p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger mb-5" %></p>
+
+<%= link_to "Back", :back, class: "text-secondary" %>
+ -->
+
+
+<!--#####マイページ画面#####-->
+<div class="container user">
+  <div class="row user">
+    <div class="col-lg-12 text-center">
+      <div class="user-name-text">
+        <h2 class="user-heading">子供の情報確認・編集</h2>
+          <p class="border"></p>
+            <h3 class="user-subheading text-muted">子供に関する情報を確認することができます。</h3>
+
+
+            <!--子供が空ではなかったら、表示-->
+            <p><%= link_to "子供を追加する", top_children_question_children_path(current_customer.id), class:"btn green btn-default btn-lg" unless current_customer.children.blank? %></p>
+
+            <!--子供が空だったら、表示。-->
+            <p><%= link_to "はじめよう",top_children_question_children_path(current_customer.id),class:"btn btn-start" if current_customer.children.blank? %></p>
+
+            <!--アドレスが空でないなら、表示-->
+            <p><%= link_to "アカウント変更", edit_address_path(current_customer.id), class:"btn gray btn-default btn-lg" unless current_customer.children.blank? %></P>
+    </div>
+  </div>
+</div>
+
+
+<!--#####子供情報#####  -->
+  <% @children.each do |child| %>
+  <p class="border-children"></p>
+    <div class="row child-box">
+      <div class="col-md-6">
+        <div class="child-image">
+          <!-- ChildrenControllerのupdateアクションへ -->
+          <%= image_tag '/buta.jpg' if child.image.blank? %>
+          <%= image_tag child.image unless child.image.blank? %>
+            <%= form_for(child, url: child_path(child), method: :put) do |f| %>
+              <%= f.file_field :image %>
+              <%= f.hidden_field :image_cache %>
+              <%= f.submit "子供の画像を登録する" %>
+            <% end %>
+        </div>
+      </div>
+
+
+    <div class="col-md-6">
+      <table class="child-detail-table">
+        <tr>
+          <th>名前</th>
+          <td><%= child.name %>さん</td>
+        </tr>
+
+        <tr>
+          <th>誕生日</th>
+          <td><%= child.birthday %></td>
+        </tr>
+
+        <tr>
+          <th>性別</th>
+          <td>
+            <%= "男の子" if child.sex == "1" %>
+            <%= "女の子" if child.sex == "2" %>
+          </td>
+        </tr>
+
+        <tr>
+          <th>サイズ</th>
+          <td><%= child.size.to_s %></td>
+        </tr>
+
+        <tr>
+          <th>ステータス</th>
+          <td>
+            <%= "会員" if child.paymented_on == true%>
+            <%= "非会員" if child.paymented_on == false%>
+          </td>
+        </tr>
+      </table>
+    </div>
+
+
+    <div class="closet-info col-lg-12 text-center">
+      <P><%= link_to 'クローゼットの中身をみる', child_path(child.id), class:"btn gray btn-default btn-lg" if child.paymented_on == true %></P>
+      <P><%= link_to '削除', child_path(child.id), class:"btn gray btn-default btn-lg", method: :delete, data: { confirm: '子供の情報を削除しますがよろしいでしょうか？' } if child.customer == current_customer %></P>
+
+
+      <P><%= link_to 'サブスクリプションを解約する', charge_path(params: {child_id: child.id}), class:"btn red btn-default btn-lg", method: :delete, data: { confirm: 'サブスクリプションを解約してもよろしいでしょうか？' } unless child.stripe_id.blank? %></P>
+      <P><%= link_to '定期購入をはじめる', new_charge_path(params: {child_id: child.id}), class:"btn green btn-default btn-lg" if child.paymented_on == false %> </P>
+    </div>
+      <% end %>
+  </div>
+</div>

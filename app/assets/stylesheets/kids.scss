@@ -83,7 +83,7 @@ section h2.top-introduction-heading {
 .border {
     width: 66px;
     border-top: none;
-    border-bottom: 3px solid #2fd4a6;;
+    border-bottom: 3px solid #2fd4a6;
     display: inline-block;
 }
 section h3.top-introduction-subheading {
@@ -134,6 +134,13 @@ section h2.second-introduction-heading {
     border-bottom: 3px solid #2fd4a6;
     display: inline-block;
 }
+.border-children {
+    width: 100%;
+    border-top: none;
+    border-bottom: 3px solid #f1f3f2;
+    display: inline-block;
+}
+
 section h3.second-introduction-subheading {
     margin-bottom: 75px;
     text-transform: none;

@@ -9,49 +9,11 @@
   </head>
 
   <body>
-    <!--Navgation-->
-    <nav class="navbar navbar-default adjust navbar-fixed-top">
-      <div class="container-fluid">
-        
-        <!--Brand and Toggle-->
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#gnavi">
-            <span class="sr-only"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a href="/" class="navbar-brand">KIDS WEAR</a>
-        </div>
-        
-    
-    <!--メニューリスト-->
-      <div id="gnavi" class="collapse navbar-collapse">
-        <ul class="nav navbar-nav navbar-right">
-          <li><%= link_to "お問い合わせ", new_contact_path %></li>
-          <!--ログイン状態-->
-          <% if logged_in? %>
-              <li><%= link_to "マイページ", users_path(current_user.id) %></li>
-              <li><%= link_to "ログアウト", session_path(current_user.id), method: :delete %></li>
-          <% else %>
-          <!--未ログイン-->
-            <li><%= link_to "新規登録", new_user_path, class:"register-btn" %></li>
-            <li><%= link_to "ログイン", new_session_path %></li>
-          <% end %>
-        </ul>
-      </div>
-      <!--/.navbar-collapse-->
-    </div>
-    <!--/.container-->
-  </nav>
-    <% flash.each do |key, value| %>
-      <%= content_tag(:div, value, class: "flash flash__#{key}") %>
-    <% end %>
+    <%= render "layouts/header" %>
+      <%= flash_message(flash[:success], :success) if flash[:success] %>
+      <%= flash_message(flash[:error], :danger) if flash[:error] %>
+      <%= flash_message(flash[:alert], :warning) if flash[:alert] %>
+      <%= flash_message(flash[:notice], :info) if flash[:notice] %>
 <%= yield %>
-
-
-  <!--<footer>-->
-  <!--  <small>© 2017 Copyright KIDS WEAR powered by K.O.</small>-->
-  <!--</footer>-->
-</body>
+  </body>
 </html>

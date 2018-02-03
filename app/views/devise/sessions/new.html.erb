@@ -1,0 +1,29 @@
+<div class="card card-container">
+  <h2 class="text-center">ログイン</h2>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name), local: true) do |f| %>
+    <%#= form_for(resource, as: resource_name, url: customer_session_path, local: true) do |f| %>
+    <div class="form-group"></br>
+      <%= f.label "名前orメールアドレス", class:"adjust-label" %><br/>
+      <%= f.text_field :login, class: "form-control adjust col-md-5 col-sm", placeholder: "名前またはメールアドレスを入力して下さい", autofocus:true, required: true %><br/>
+    </div>
+
+    <div class="form-group"></br>
+      <%= f.label :パスワード, class:"adjust-label" %><br/>
+      <%= f.password_field :password, class: "form-control adjust col-md-5 col-sm", placeholder: "パスワードを入力して下さい", autofocus:true, required: true %><br/>
+    </div>
+
+
+
+      <% if devise_mapping.rememberable? -%>
+        <div class="form-group">
+          <%= f.check_box :remember_me %>
+          <%= f.label :パスワードを記憶する %>
+        </div>
+      <% end -%>
+
+      <div class="actions pb-5">
+        <%= f.submit "ログイン", class: "btn btn-primary btn-block btn-signin" %>
+      </div>
+      <% end %>
+
+      <%= render "devise/shared/links" %>
