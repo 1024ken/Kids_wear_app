@@ -14,6 +14,7 @@ class Customer < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :lockable, :timeoutable
 
+
   attr_accessor :login
   def login
     @login || name || email

@@ -102,7 +102,7 @@ class ChildrenController < ApplicationController
    def destroy
      @children = Child.find(params[:id])
      @children.destroy
-     redirect_to edit_customer_registration_path, notice: '子供の情報を削除されました'
+     redirect_to edit_customer_registration_path, notice: '子供の情報を削除されました。'
    end
 
 

@@ -6,13 +6,10 @@ ja:
       address: "住所"
       child: "子供"
       contact: "お問い合わせ"
-  
-      
-      
+
+
+
     attributes:
-      blog:
-        title: "タイトル"
-        content: "内容"
       address:
         name: "名前"
         email: "メールアドレス"
@@ -27,11 +24,11 @@ ja:
         name: "名前"
         email: "メールアドレス"
         content: "お問い合わせ内容"
-        
-        
-        
-        
-      user:
+
+
+
+
+      customer:
         title: "タイトル"
         name: "名前"
         email: "メールアドレス"
