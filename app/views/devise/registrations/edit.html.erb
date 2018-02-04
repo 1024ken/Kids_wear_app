@@ -81,7 +81,7 @@
       <div class="col-md-6">
         <div class="child-image">
           <!-- ChildrenControllerのupdateアクションへ -->
-          <%= image_tag '/buta.jpg' if child.image.blank? %>
+          <%= image_tag('user-add.jpg', width: '360', height: '360') if child.image.blank? %>
           <%= image_tag child.image unless child.image.blank? %>
             <%= form_for(child, url: child_path(child), method: :put) do |f| %>
               <%= f.file_field :image %>
