@@ -9,7 +9,7 @@
           </div>
             <div class="sub-text">月額5000円で季節に応じてパーソナライズされた子供服を届けます。</div>
             <div class="start">
-            <% if signed_in? && current_customer.children.empty? %>
+              <% if customer_signed_in? && current_customer.children.empty? %>
               <%= link_to "はじめよう",top_children_question_children_path(current_customer.id),class:"btn btn-start" %>
             <% end %>
             </div>
@@ -39,7 +39,7 @@
         <h3 class="top-introduction-subheading text-center">
           レンタルでも購入でもない、あなただけのクローゼット<br>子供の成長に合わせて、あなただけの子供服をお届けする<br>月額制ファッションレンタルサービス
         </h3>
-        <% if signed_in? && current_customer.children.empty? %>
+        <% if customer_signed_in? && current_customer.children.empty? %>
           <%= link_to "はじめよう",top_children_question_children_path(current_customer.id),class:"btn btn-start" %>
         <% end %>
       </div>

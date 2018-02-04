@@ -14,7 +14,8 @@ class Customer < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :lockable, :timeoutable
+         :lockable, :timeoutable, :confirmable
+
 
   # 属性を付与し、nameでもログイン等の認証キー
   attr_accessor :login
