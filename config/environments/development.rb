@@ -5,7 +5,7 @@ Rails.application.configure do
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
 
-  BetterErrors::Middleware.allow_ip! "0.0.0.0/0"
+  BetterErrors::Middleware.allow_ip! '0.0.0.0/0'
   config.cache_classes = false
 
   # Do not eager load code on boot.
@@ -58,16 +58,15 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :letter_opener_web
 
-
   ActionMailer::Base.delivery_method = :smtp
   ActionMailer::Base.smtp_settings =
-{
-  user_name: ENV['SENDGRID_USERNAME'],
-  password: ENV['SENDGRID_PASSWORD'],
-  domain: "example.com",
-  address: "smtp.SendGrid.net",
-  port: 2525,
-  authentication: :plain,
-  enable_starttls_auto: true
-}
+    {
+      user_name: ENV['SENDGRID_USERNAME'],
+      password: ENV['SENDGRID_PASSWORD'],
+      domain: 'example.com',
+      address: 'smtp.SendGrid.net',
+      port: 2525,
+      authentication: :plain,
+      enable_starttls_auto: true
+    }
 end
