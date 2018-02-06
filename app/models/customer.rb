@@ -14,7 +14,9 @@ class Customer < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :lockable, :timeoutable, :confirmable
+         :lockable, :timeoutable, :confirmable,
+         :omniauthable, omniauth_providers: %i(google)
+
 
 
   # 属性を付与し、nameでもログイン等の認証キー
@@ -35,6 +37,24 @@ class Customer < ApplicationRecord
       ['lower(name) = :value OR lower(email) = :value',
        { value: login.downcase }]
     ).first
+  end
+
+  def self.create_unique_string
+    SecureRandom.uuid
+  end
+  # 外部から取得したカスタマー情報を元に、本アプリ用のカスマターのインスタンスを生成
+  def self.find_for_google(auth)
+  customer = Customer.find_by(email: auth.info.email)
+
+    unless customer
+      customer = Customer.new(email: auth.info.email,
+                      provider: auth.provider,
+                      uid:      auth.uid,
+                      password: Devise.friendly_token[0, 20],
+                                   )
+    end
+    customer.save
+    customer
   end
 
 

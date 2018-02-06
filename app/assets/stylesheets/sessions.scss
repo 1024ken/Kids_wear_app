@@ -97,7 +97,7 @@
 
 .btn.btn-signin {
     /*background-color: #4d90fe; */
-    background-color: #2fd4a6;
+    background-color: #8fd4ab;
     /* background-color: linear-gradient(rgb(104, 145, 162), rgb(12, 97, 33));*/
     padding: 0px;
     font-weight: 700;
@@ -146,4 +146,11 @@
     text-align: center;
     font-size: 116%;
 
+}
+.btn-google {
+  background-color: #8fd4ab;
+  font-size: 16px;
+  height: 40px;
+  border-radius: 24px;
+  border: none;
 }

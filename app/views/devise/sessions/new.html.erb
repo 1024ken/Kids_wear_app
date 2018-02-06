@@ -25,5 +25,7 @@
         <%= f.submit "ログイン", class: "btn btn-primary btn-block btn-signin" %>
       </div>
       <% end %>
-
+      <div class="word-partition">or</div>
+      <%= link_to 'Googleで今すぐログインする', customer_google_omniauth_authorize_path, class: "btn btn-block btn-google" %>
       <%= render "devise/shared/links" %>
+    </div>
