@@ -1,13 +1,13 @@
 class ContactsController < ApplicationController
   before_action :set_contact, only: [:show, :edit, :update, :destroy]
 
-  
-  
+
+
 
   def new
     @contact = Contact.new
   end
-  
+
   def confirm
     @contact = Contact.new(contact_params)
     if @contact.valid?
@@ -16,14 +16,13 @@ class ContactsController < ApplicationController
     else
       # 入力内容に問題があれば、問い合わせ画面を再描画
       render action: 'new'
-    end  
+    end
   end
-  
-  
+
+
   # 問い合わせをDBに保存
   def create
     @contact = Contact.new(contact_params)
-
       if @contact.save
         # メーラー呼び出し
         ContactMailer.contact_mail(@contact).deliver

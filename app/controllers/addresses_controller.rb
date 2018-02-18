@@ -3,7 +3,7 @@ class AddressesController < ApplicationController
   # new→confirm→create
 
   def new
-      @addresses = Address.new
+    @addresses = Address.new
   end
 
   def confirm
@@ -11,7 +11,6 @@ class AddressesController < ApplicationController
     @addresses = current_customer.addresses.build(address_params)
     @change_prefecture_code = JpPrefecture::Prefecture.find(@addresses.prefecture_code)
 
-    # バリデーションが通過すればtrue,引っかかればfalseを返す。
     render :new if @addresses.invalid?
   end
 
@@ -46,7 +45,7 @@ class AddressesController < ApplicationController
   end
 
   private
-        def address_params
-            params.require(:address).permit(:name, :kana, :email, :phone_code, :post_code, :prefecture_code, :city_code, :street_code, :building_code, :customer_id)
-        end
+    def address_params
+        params.require(:address).permit(:name, :kana, :email, :phone_code, :post_code, :prefecture_code, :city_code, :street_code, :building_code, :customer_id)
+    end
 end
