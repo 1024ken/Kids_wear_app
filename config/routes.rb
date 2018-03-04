@@ -1,12 +1,14 @@
 Rails.application.routes.draw do
 
+  root to: 'kids#top'
+
   devise_for :customers, controllers: {
         sessions: 'customers/sessions',
         registrations: 'customers/registrations',
         omniauth_callbacks: "customers/omniauth_callbacks"
       }
 
-  resources :contacts do
+  resources :contacts, only: [ :new, :create] do
     collection do
       post :confirm
     end
@@ -26,11 +28,6 @@ Rails.application.routes.draw do
     end
   end
 
-  # resources :sessions, only: [:new, :create, :destroy]
-  # resources :users
-
-  resources :kids
-  root to: 'kids#top'
   resource :charge
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
