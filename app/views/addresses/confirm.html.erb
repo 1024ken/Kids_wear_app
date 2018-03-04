@@ -65,11 +65,9 @@
         <%= @addresses.building_code %>
       </div>
     </div>
-      <!--createアクションへ-->
       <%= f.submit "ユーザ情報を登録する" , class:"btn btn-next"%>
     <% end %>
 
-      <!--戻るボタン-->
   <%=form_with(model: @addresses, local: true, url: new_address_path, method:"get") do |f| %>
     <%= f.hidden_field :name %>
     <%= f.hidden_field :kana %>
@@ -80,7 +78,6 @@
     <%= f.hidden_field :city %>
     <%= f.hidden_field :street %>
     <%= f.hidden_field :building %>
-
     <%= f.submit "戻る", class: "btn btn-back", name: "back" %>
   <% end %>
   </div>

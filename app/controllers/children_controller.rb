@@ -63,7 +63,7 @@ class ChildrenController < ApplicationController
     if current_customer.addresses.blank?
       redirect_to new_address_path
     else
-      render template: "charges/new"
+      render "charges/new"
     end
   end
 
@@ -74,7 +74,7 @@ class ChildrenController < ApplicationController
   def destroy
     @children = Child.find(params[:id])
     @children.destroy
-    redirect_to edit_customer_registration_path, notice: '子供の情報を削除されました。'
+    redirect_to edit_customer_registration_path, notice: '子供の情報は削除されました。'
   end
 
   def update

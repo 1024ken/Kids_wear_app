@@ -1,25 +1,20 @@
 <div class="container basic">
   <%= render partial: "shared/basic-title-rule", locals: { heading_text: "お支払い情報を登録", subheading_text: "以下より支払い情報を入力してください（カード番号4242,4242,4242,4242)" } %>
    <%= form_tag charge_path, user_id: current_customer.id do %>
-      <article>
-        <% if flash[:error].present? %>
-          <div id="error_explanation">
-            <p><%= flash[:error] %></p>
-          </div>
-        <% end %>
-      </article>
-      <% if @children %>
-      <%# binding.pry %>
-        <%= hidden_field_tag :child_id, @children.id %>
-      <% else %>
-        <%= hidden_field_tag :child_id, params[:child_id] %>
-      <% end %>
+     <article>
+       <% if flash[:error].present? %>
+         <div id="error_explanation">
+           <p><%= flash[:error] %></p>
+         </div>
+       <% end %>
+     </article>
+     <% if @children %>
+       <%= hidden_field_tag :child_id, @children.id %>
+     <% else %>
+       <%= hidden_field_tag :child_id, params[:child_id] %>
+     <% end %>
 
-
-
-
-
-<!--チェックアウト-->
+<!--Stripe checkout-->
 <div class="checkout text-center">
   <script
     src="https://checkout.stripe.com/checkout.js" class="stripe-button"

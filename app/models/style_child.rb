@@ -1,4 +1,4 @@
 class StyleChild < ApplicationRecord
-    belongs_to :child
-    belongs_to :style
+  belongs_to :child
+  belongs_to :style
 end

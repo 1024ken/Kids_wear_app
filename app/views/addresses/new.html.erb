@@ -2,65 +2,62 @@
 <%= render partial: "shared/errors-messages", locals: { errors_messages: @addresses } %>
 <div class="container basic">
   <%= render partial: "shared/basic-title-rule", locals: { heading_text: "お届け先の登録", subheading_text: "子供服のお届け先を教えてください。" } %>
-      <%= form_with(model: @addresses, url: confirm_addresses_path, local: true, html: {class: "form-horizontal"}) do |f| %>
-        <div class="form-group">
-          <label class="col-md-4 control-label" for="textinput">名前</label>
-          <div class="col-md-6 offset-md-1">
-            <P><%= current_customer.name %></p>
-          </div>
+    <%= form_with(model: @addresses, url: confirm_addresses_path, local: true, html: {class: "form-horizontal"}) do |f| %>
+      <div class="form-group">
+        <label class="col-md-4 control-label" for="textinput">名前</label>
+        <div class="col-md-6 offset-md-1">
+          <P><%= current_customer.name %></p>
         </div>
+      </div>
 
-        <div class="form-group">
-            <label class="col-md-4 control-label" for="textinput">メールアドレス</label>
-          <div class="col-md-6 offset-md-1">
-            <%= current_customer.email %>
-          </div>
+      <div class="form-group">
+          <label class="col-md-4 control-label" for="textinput">メールアドレス</label>
+        <div class="col-md-6 offset-md-1">
+          <%= current_customer.email %>
         </div>
+      </div>
 
-
-        <div class="form-group">
-            <label class="col-md-4 control-label" for="textinput">電話番号</label>
-          <div class="col-md-6 offset-md-1">
-            <%= f.telephone_field :phone_code, class: "form-control" ,placeholder:"例）08088888888", autofocus:true %>
-          </div>
+      <div class="form-group">
+          <label class="col-md-4 control-label" for="textinput">電話番号</label>
+        <div class="col-md-6 offset-md-1">
+          <%= f.telephone_field :phone_code, class: "form-control" ,placeholder:"例）08088888888", autofocus:true %>
         </div>
+      </div>
 
-
-        <div class="form-group">
-            <label class="col-md-4 control-label" for="textinput">郵便番号</label>
-          <div class="col-md-6 offset-md-1">
-            <%= f.text_field :post_code, class: "form-control" ,placeholder:"例）111-1111", autofocus:true %>
-          </div>
+      <div class="form-group">
+          <label class="col-md-4 control-label" for="textinput">郵便番号</label>
+        <div class="col-md-6 offset-md-1">
+          <%= f.text_field :post_code, class: "form-control" ,placeholder:"例）111-1111", autofocus:true %>
         </div>
+      </div>
 
-        <div class="form-group">
-            <label class="col-md-4 control-label" for="textinput">都道府県</label>
-          <div class="col-md-6 offset-md-1">
-            <%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, {} ,{class: "form-control"} %>
-          </div>
+      <div class="form-group">
+          <label class="col-md-4 control-label" for="textinput">都道府県</label>
+        <div class="col-md-6 offset-md-1">
+          <%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name, {} ,{class: "form-control"} %>
         </div>
+      </div>
 
-        <div class="form-group">
-            <label class="col-md-4 control-label" for="textinput">市区町村</label>
-          <div class="col-md-6 offset-md-1">
-            <%= f.text_field :city_code, class: "form-control" ,placeholder:"市区町村", autofocus:true %>
-          </div>
+      <div class="form-group">
+          <label class="col-md-4 control-label" for="textinput">市区町村</label>
+        <div class="col-md-6 offset-md-1">
+          <%= f.text_field :city_code, class: "form-control" ,placeholder:"市区町村", autofocus:true %>
         </div>
+      </div>
 
-        <div class="form-group">
-            <label class="col-md-4 control-label" for="textinput">番地</label>
-          <div class="col-md-6 offset-md-1">
-            <%= f.text_field :street_code, class: "form-control" ,placeholder:"番地", autofocus:true %>
-          </div>
+      <div class="form-group">
+          <label class="col-md-4 control-label" for="textinput">番地</label>
+        <div class="col-md-6 offset-md-1">
+          <%= f.text_field :street_code, class: "form-control" ,placeholder:"番地", autofocus:true %>
         </div>
+      </div>
 
-
-        <div class="form-group">
-            <label class="col-md-4 control-label" for="textinput">建物</label>
-          <div class="col-md-6 offset-md-1">
-            <%= f.text_field :building_code, class: "form-control" ,placeholder:"建物", autofocus:true %>
-          </div>
+      <div class="form-group">
+          <label class="col-md-4 control-label" for="textinput">建物</label>
+        <div class="col-md-6 offset-md-1">
+          <%= f.text_field :building_code, class: "form-control" ,placeholder:"建物", autofocus:true %>
         </div>
-        <%= f.submit '確認画面へ', class:"btn btn-next" %>
-    <% end %>
+      </div>
+      <%= f.submit '確認画面へ', class:"btn btn-next" %>
+  <% end %>
 </div>
