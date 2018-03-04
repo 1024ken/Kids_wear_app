@@ -1,12 +1,9 @@
 class ChildrenController < ApplicationController
+  before_action :child_id_params, only: [:show, :destroy, :update]
 
   def top_children_question
     if params[:back]
-      @children = current_customer.children.build
-      @children.name = params["name"]
-      @children.sex = params["sex"]
-      @children.size = params["size"]
-      @children.birthday = params["birthday"]
+      @children = current_customer.children.build(top_back_params)
     else
       @children = current_customer.children.build
     end
@@ -68,17 +65,14 @@ class ChildrenController < ApplicationController
   end
 
   def show
-    @children = Child.find(params[:id])
   end
 
   def destroy
-    @children = Child.find(params[:id])
     @children.destroy
     redirect_to edit_customer_registration_path, notice: '子供の情報は削除されました。'
   end
 
   def update
-    @children = Child.find(params[:id])
     if @children.update(children_params)
       redirect_to edit_customer_registration_path, notice: "更新しました。"
     else
@@ -87,6 +81,14 @@ class ChildrenController < ApplicationController
   end
 
   private
+    def top_back_params
+      params.permit(:name, :sex, :birthday, :size)
+    end
+
+    def child_id_params
+      @children = Child.find(params[:id])
+    end
+
     def children_params
       params.require(:child).permit(:id, :name, :birthday, :sex, :color, :size, :style, :parttern, :dislike, :content, :image, :image_cache, comments_attributes: [:id, :content])
     end
