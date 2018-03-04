@@ -24,11 +24,10 @@ class AddressesController < ApplicationController
   end
 
   def update
-    @addresses = Address.find_by(customer_id: current_customer.id)
-    if @addresses.update(address_params)
-      redirect_to root_path, flash: { notice: '更新が完了しました' }
+    if Address.update(address_params)
+      redirect_to root_path, notice: '更新が完了しました!'
     else
-      flash.now[:alert] = "更新が失敗しました"
+      flash.now[:alert] = "更新が失敗しました!"
       render :edit
     end
   end
