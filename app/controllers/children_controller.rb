@@ -25,6 +25,7 @@ class ChildrenController < ApplicationController
   def create
     @children = current_customer.children.build(children_params)
     @children.save
+
     color_key_value = params[:child][:color]
     color_key_value.each do |key,value|
       if value == "1"
@@ -81,6 +82,7 @@ class ChildrenController < ApplicationController
   end
 
   private
+
     def top_back_params
       params.permit(:name, :sex, :birthday, :size)
     end
